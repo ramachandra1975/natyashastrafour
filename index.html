@@ -1,497 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nāda, Vāk, Śāstra — The Architecture of Sound in the Indic Tradition</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Tiro+Devanagari+Hindi&family=JetBrains+Mono:wght@400;500&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #f3efe4;
-    --ink: #241f19;
-    --ink-soft: #4a4235;
-    --rule: #c9bfa8;
-    --accent: #7a1f14;
-    --accent-soft: #8f5a2a;
-    --panel: #eae3d0;
-  }
-  *{ box-sizing:border-box; }
-  body{
-    margin:0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family:'Source Serif 4', serif;
-    font-size: 17px;
-    line-height: 1.75;
-  }
-  .dev{ font-family:'Tiro Devanagari Hindi', serif; }
-  .mono{ font-family:'JetBrains Mono', monospace; }
-
-  .page{ max-width: 780px; margin: 0 auto; padding: 0 30px 120px; }
-
-  /* running header */
-  .runhead{
-    position: sticky; top:0; z-index:10;
-    background: var(--bg);
-    border-bottom: 1px solid var(--rule);
-    padding: 10px 0;
-    font-family:'JetBrains Mono', monospace;
-    font-size: 11.5px;
-    letter-spacing: .06em;
-    color: var(--ink-soft);
-    display:flex; justify-content:space-between;
-  }
-  .runhead .wrap{ max-width:780px; margin:0 auto; padding:0 30px; display:flex; justify-content:space-between; width:100%; }
-
-  /* title block */
-  .titleblock{ padding: 64px 0 30px; border-bottom: 3px double var(--rule); }
-  .kicker{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 12px; letter-spacing:.14em; text-transform:uppercase;
-    color: var(--accent-soft); margin-bottom: 18px;
-  }
-  h1.doctitle{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:600; font-size: clamp(32px,5.4vw,46px);
-    line-height:1.15; margin:0 0 14px; color: var(--ink);
-  }
-  .subtitle{ font-size:18px; color: var(--ink-soft); font-style:italic; margin:0 0 26px; max-width:56ch; }
-  .meta{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--ink-soft); }
-
-  .abstract{
-    margin-top: 34px; padding: 22px 26px;
-    background: var(--panel);
-    border-left: 3px solid var(--accent);
-  }
-  .abstract .label{
-    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.12em;
-    text-transform:uppercase; color:var(--accent); display:block; margin-bottom:10px;
-  }
-  .abstract p{ margin:0; font-size:15.5px; color: var(--ink-soft); }
-
-  .toc{ padding: 30px 0 10px; }
-  .toc .label{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-soft); margin-bottom:14px; display:block;}
-  .toc ol{ margin:0; padding-left: 20px; columns: 1; font-size:14.5px; color: var(--ink-soft); }
-  .toc li{ margin-bottom:5px; }
-  .toc a{ color: var(--ink-soft); text-decoration:none; border-bottom:1px dotted var(--rule); }
-  .toc a:hover{ color: var(--accent); }
-
-  /* PARTS */
-  .part{ padding: 56px 0 10px; border-top: 2px solid var(--ink); margin-top: 40px; }
-  .part .partlabel{
-    font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:.14em;
-    text-transform:uppercase; color:var(--accent); margin-bottom:8px;
-  }
-  .part h2{
-    font-family:'Cormorant Garamond', serif; font-weight:600;
-    font-size: clamp(26px,4vw,32px); margin:0 0 8px; color:var(--ink);
-  }
-  .part .partdek{ font-size:15px; color:var(--ink-soft); font-style:italic; margin-bottom:10px; max-width:60ch; }
-
-  .subsec{ padding: 30px 0 4px; }
-  .subsec h3{
-    font-family:'Source Serif 4', serif; font-weight:600;
-    font-size: 20px; margin: 0 0 4px; color: var(--ink);
-    display:flex; align-items:baseline; gap:10px;
-  }
-  .subsec h3 .num{ font-family:'JetBrains Mono', monospace; color:var(--accent-soft); font-size:15px; }
-  .subsec h3 .dev{ color:var(--accent); font-size:0.8em; font-weight:400; margin-left:2px; }
-  .subsec p{ margin: 0 0 15px; text-align: justify; hyphens: auto; }
-  .subsec p.dim{ color: var(--ink-soft); }
-  .cite{ font-family:'JetBrains Mono', monospace; font-size: 13px; color: var(--accent-soft); white-space:nowrap; }
-  .term{ font-style: italic; color: var(--accent); }
-  .devq{ font-family:'Tiro Devanagari Hindi', serif; color: var(--ink); }
-
-  blockquote.src{
-    margin: 22px 0; padding: 18px 24px;
-    background: var(--panel); border-left: 3px solid var(--accent-soft);
-    font-size: 15.5px;
-  }
-  blockquote.src .devq{ display:block; font-size: 19px; line-height:1.85; margin-bottom:8px; }
-  blockquote.src cite{ font-style:normal; font-family:'JetBrains Mono', monospace; font-size:11.5px; color: var(--ink-soft); text-transform:uppercase; letter-spacing:.05em; }
-
-  table.datatable{
-    width:100%; border-collapse: collapse; margin: 20px 0 26px; font-size: 14.5px;
-  }
-  table.datatable th, table.datatable td{
-    border: 1px solid var(--rule); padding: 8px 10px; text-align:left; vertical-align: top;
-  }
-  table.datatable th{ background: var(--panel); font-weight:600; color:var(--ink); }
-  table.datatable td.dev{ color: var(--accent); }
-
-  .argbox{
-    margin: 24px 0; padding: 18px 22px;
-    border: 1px solid var(--ink); border-left: 4px solid var(--accent);
-  }
-  .argbox .label{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:8px; }
-
-  .divider{ text-align:center; margin: 40px 0; color: var(--rule); letter-spacing: 12px; font-size:12px; }
-
-  .bib{ padding: 50px 0; }
-  .bib h2{ font-family:'Cormorant Garamond', serif; font-weight:600; font-size:26px; margin:0 0 20px; }
-  .bib ol{ padding-left: 20px; font-size: 14.5px; color: var(--ink-soft); }
-  .bib li{ margin-bottom: 10px; }
-  .bib .primary{ color: var(--ink); font-weight:600; }
-
-  footer.endnote{ padding: 60px 0 20px; text-align:center; color: var(--ink-soft); font-size:13px; }
-  footer.endnote .devq{ display:block; font-size:20px; margin-bottom:8px; color:var(--accent); }
-
-  @media (max-width: 600px){
-    body{ font-size:16px; }
-    .subsec p{ text-align:left; hyphens:none; }
-  }
-</style>
-</head>
-<body>
-
-<div class="runhead"><div class="wrap">
-  <span>NĀDA · VĀK · ŚĀSTRA</span><span>WORKING PAPER</span>
-</div></div>
-
-<div class="page">
-
-  <div class="titleblock">
-    <div class="kicker">Working Paper · Indic Linguistics &amp; Dramaturgy</div>
-    <h1 class="doctitle">Nāda, Vāk, Śāstra: The Architecture of Sound in the Indic Linguistic and Dramaturgical Tradition</h1>
-    <p class="subtitle">Coexistence, grammatical precision, and the derivation of a science of sound from Śikṣā to the Nāṭyaśāstra — with an account of kāvyotpatti and nāṭyotpatti as textually specified origin-events rather than inherited metaphor.</p>
-    <div class="meta">Compiled from the Vedāṅga, Nāṭyaśāstra, and Alaṃkāraśāstra traditions · working draft</div>
-
-    <div class="abstract">
-      <span class="label">Abstract</span>
-      <p>This paper argues that the Indic tradition's treatment of sound is not a loose family of related ideas but a single derivational method applied at successive levels: phoneme, script, root, compound, meter, melody, meaning, and finally aesthetic emotion. Part I establishes the sociolinguistic ground — a genealogically layered register-stack (Sanskrit–Prakrit–Pali–Apabhraṃśa) bound by one script family (Brāhmī–Devanāgarī) rather than several. Part II details the specific grammatical apparatus — Śikṣā, the Māheśvara Sūtras, the Aṣṭādhyāyī, sandhi, samāsa, Nirukta, Chandas — that gives Sanskrit its derivational transparency. Part III shows how that apparatus is extended, by Bhartṛhari and the gāndharva chapters of the Nāṭyaśāstra, into a general theory of sound as ontological substance (nāda, vāk, sphoṭa) rather than mere communicative code. Parts IV and V examine the textually specified origin-accounts of drama (nāṭyotpatti) and poetry (kāvyotpatti) as doctrinally load-bearing narratives, not decorative myth. Part VI sets out the rasa system's formal apparatus in full technical detail. Part VII grounds the whole argument in material and historical evidence — epigraphy, canonical transmission, script evolution, oral pedagogy. Part VIII closes by showing that sphoṭa, dhvani, and rasa are three restatements of one claim: that the most consequential operation of sound and word occurs beneath their own audible or literal surface.</p>
-    </div>
-
-    <div class="toc">
-      <span class="label">Contents</span>
-      <ol>
-        <li><a href="#p1">Part I — Linguistic Coexistence in the Indic Ecumene</a></li>
-        <li><a href="#p2">Part II — The Grammatical Architecture of Sanskrit</a></li>
-        <li><a href="#p3">Part III — From Grammar to a Science of Sound</a></li>
-        <li><a href="#p4">Part IV — Nāṭyotpatti: The Origin of Drama</a></li>
-        <li><a href="#p5">Part V — Kāvyotpatti: The Origin of Poetry</a></li>
-        <li><a href="#p6">Part VI — The Rasa System and Its Formal Apparatus</a></li>
-        <li><a href="#p7">Part VII — Historical Transmission and Material Evidence</a></li>
-        <li><a href="#p8">Part VIII — Synthesis: Dhvani as the Closing Argument</a></li>
-        <li><a href="#bib">Working Bibliography</a></li>
-      </ol>
-    </div>
-  </div>
-
-  <!-- PART I -->
-  <div class="part" id="p1">
-    <div class="partlabel">Part I</div>
-    <h2>Linguistic Coexistence in the Indic Ecumene</h2>
-    <p class="partdek">A register-stack bound by one script family, not a set of competing languages.</p>
-
-    <div class="subsec">
-      <h3><span class="num">1.1</span> The Register-Stack Model</h3>
-      <p>The standard account of multilingual societies treats coexistence as either <span class="term">diglossic</span> (a fixed high/low functional split, per Ferguson's classical formulation) or <span class="term">contact-based</span> (languages borrowing from each other through trade and conquest). Neither model, applied without modification, captures the Indic case. The relevant unit is not two registers in stable opposition but a graded, four-stage genealogical descent — Sanskrit, Prakrit, Pali, Apabhraṃśa — in which each later stage is a measurable phonological and morphological simplification of the one before it: loss of case-ending distinctions, cluster simplification, vowel shortening. This paper terms this a <span class="term">register-stack</span> to distinguish it from a static diglossic split: the stack has direction, and that direction is one-way.</p>
-      <p class="dim">The evidentiary basis for treating this as genealogical rather than incidental is internal to the grammatical tradition itself: Prakrit grammars such as Vararuci's Prākṛta-Prakāśa do not describe Prakrit as an independent system but derive its forms rule-by-rule from a specified Sanskrit input, in a method structurally identical to Pāṇini's own derivation of surface forms from underlying roots (§2.3–2.4 below). Coexistence, on this reading, is a byproduct of an explicitly derivational grammatical culture applying its own method reflexively to its daughter registers.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">1.2</span> Sanskrit Held Apart, Prakrit Left to Drift</h3>
-      <p>A second feature distinguishes the Indic case from comparable stratified-register societies elsewhere: Sanskrit's grammar was fixed early and deliberately (Pāṇini, conventionally dated to the fourth century BCE), while Prakrit was left ungoverned by any comparably authoritative, prescriptive grammar until centuries later, and even then was codified <span class="term">descriptively</span>, as a record of attested regional usage, rather than <span class="term">prescriptively</span>, as a standard to be enforced. The asymmetry is functional, not accidental: a register intended for pan-regional scholarly and ritual transmission across centuries requires fixation against drift; a register intended for immediate popular and narrative use does not, and indeed benefits from the flexibility drift provides.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">1.3</span> Case Study — On-Stage Register Assignment as Institutionalized Coexistence</h3>
-      <p>The Nāṭyaśāstra's own dramaturgical practice supplies the clearest documentary case of this coexistence functioning as designed policy rather than passive social fact. Chapter 17 of the text (<span class="cite">NŚ 17</span>) assigns spoken register by character type within a single play: the fully Sanskrit register to kings, ministers, brāhmaṇas, and ascetics; Śaurasenī to queens and women of rank; Māgadhī to servants and lower attendants; Ardhamāgadhī to specific middling male roles; and Paiśācī, a register with a comparatively harsher consonantal profile, to demons and forest-dwelling or morally marked characters. This is treated in detail at §7.1 below; it is introduced here because it is the single clearest piece of evidence that the register-stack described in §1.1 was not merely observed by the tradition but actively deployed as a compositional and characterizing resource within the tradition's own central literary form.</p>
-      <div class="argbox">
-        <span class="label">Argumentative claim</span>
-        A spectator in Bharata's theatre read social position, and frequently moral alignment, directly off a character's register before any plot event confirmed it. Register functioned as characterization in the same manner āhārya (costume and makeup convention) did — this paper treats linguistic register, accordingly, as a fifth channel of characterization operating alongside the four canonical abhinaya channels detailed in Part VI.
-      </div>
-    </div>
-  </div>
-
-  <!-- PART II -->
-  <div class="part" id="p2">
-    <div class="partlabel">Part II</div>
-    <h2>The Grammatical Architecture of Sanskrit</h2>
-    <p class="partdek">Śikṣā, the Māheśvara Sūtras, the Aṣṭādhyāyī, sandhi, samāsa, Nirukta, Chandas.</p>
-
-    <div class="subsec">
-      <h3><span class="num">2.1</span> Śikṣā <span class="dev">शिक्षा</span> — Phonetics as Prescriptive Diagnostic, Not Description</h3>
-      <p>Śikṣā, the first Vedāṅga, does not merely catalogue the sounds of Sanskrit; it specifies them along three independent axes that a modern phonetic transcription typically folds into a single approximate symbol. <span class="term">Sthāna</span> (place of articulation) organizes consonants as kaṇṭhya (guttural), tālavya (palatal), mūrdhanya (retroflex), dantya (dental), oṣṭhya (labial) — an ordering directly reflected in the traditional alphabet sequence <span class="devq">क ख ग घ ङ</span>, moving systematically from throat to lips. <span class="term">Mātrā</span> (duration) distinguishes hrasva (short), dīrgha (long), and pluta (protracted) vowels as a three-way, not binary, timing category. <span class="term">Svara</span>, in this specific Vedic sense, denotes pitch-accent — udātta (raised), anudātta (unraised), svarita (falling) — preserved in Vedic recitation with a tolerance for error close to zero, since traditional doctrine held that a misplaced accent could invert a mantra's ritual efficacy (the frequently cited case is <span class="cite">indraśatru</span>, where accent placement alone determines whether the compound means "one whose enemy is Indra" or "one whose enemy is Indra himself").</p>
-      <p class="dim">The argumentative significance of this trebled specification is that Sanskrit phonetics is <span class="term">diagnostic</span> before it is descriptive: a reciter is trained against an explicit three-axis standard, not an impressionistic sense of correct pronunciation. §3.1 below shows this same three-axis discipline transferred, largely intact, into the Nāṭyaśāstra's vācika abhinaya training.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">2.2</span> The Māheśvara Sūtras — Compression as Precondition for Grammar</h3>
-      <p>Before a single grammatical rule is stated, the fourteen Māheśvara Sūtras re-organize the phoneme inventory into a structure built specifically for rule-writing efficiency: <span class="devq">अ इ उ ण् । ऋ ऌ क् । ए ओ ङ् । ऐ औ च् । ह य व र ट् ।</span> and nine further lines, each terminating in a silent marker consonant (<span class="term">it</span>) never pronounced in any actual word, whose sole function is to close that line's phoneme-set. This structure permits <span class="term">pratyāhāra</span> — reference to any contiguous span of lines by a two-syllable code formed from a start-phoneme and a closing it-marker: <span class="devq">अच्</span> (ac) denotes the entire vowel inventory; <span class="devq">हल्</span> (hal) denotes the entire consonant inventory. The Aṣṭādhyāyī's roughly 3,959 sūtras depend on this compression to remain a memorizable text; without it, each rule would need to spell out its applicable phoneme-set in full, multiplying the grammar's length by an order of magnitude.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">2.3</span> The Aṣṭādhyāyī <span class="dev">अष्टाध्यायी</span> — Rule Typology and the Anuvṛtti Mechanism</h3>
-      <p>Pāṇini's grammar organizes its rules into functionally distinct classes that the tradition names explicitly rather than leaving implicit: <span class="term">saṃjñā</span> (definitional rules assigning technical labels to be used elsewhere in the text), <span class="term">paribhāṣā</span> (interpretive meta-rules governing how other rules are to be read), <span class="term">vidhi</span> (operative rules prescribing an actual change), <span class="term">niyama</span> (restrictive rules narrowing an otherwise broader option), <span class="term">atideśa</span> (extension rules transferring a property from one case to a structurally analogous one), and <span class="term">adhikāra</span> (governing headings whose scope persists across a run of subsequent sūtras).</p>
-      <p>The mechanism that makes this typology load-bearing rather than merely taxonomic is <span class="term">anuvṛtti</span> — the silent carrying-forward of a word or condition stated in one sūtra into an unspecified number of following sūtras, until a later rule explicitly cancels or modifies it. Correct interpretation of any individual sūtra therefore requires reconstructing its full inherited context from potentially several sūtras prior — a design choice that trades local readability for global compression. Patañjali's Mahābhāṣya and Kātyāyana's Vārttikas exist substantially to adjudicate contested cases of exactly this scope-tracking problem: where anuvṛtti should and should not be understood to extend.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">2.4</span> Dhātu-Pratyaya Derivation and Semantic Transparency</h3>
-      <p>The Dhātupāṭha enumerates approximately two thousand verbal roots across ten conjugational classes (gaṇa). Nominal derivation proceeds from these roots via two suffix classes: <span class="term">kṛt</span> suffixes, forming nouns and adjectives directly from a verbal root (<span class="devq">कर्तृ</span>, kartṛ, "doer," from √kṛ plus the agentive suffix -tṛc), and <span class="term">taddhita</span> suffixes, forming secondary derivatives from an already-formed nominal base. The consequence for expression is that Sanskrit vocabulary is, to a degree unusual among natural languages, non-atomic: the words <span class="devq">कवि</span> (kavi, poet), <span class="devq">काव्य</span> (kāvya, poem), and <span class="devq">कविता</span> (kavitā, poetry) are transparently one root, √kū ("to sound, to praise"), under three distinct nominal derivations, recoverable by any grammatically trained reader without recourse to a dictionary.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">2.5</span> Sandhi and Samāsa — Compression as Compositional Technology</h3>
-      <p><span class="term">Sandhi</span> governs sound change at morpheme and word boundaries across three registers — svara sandhi (vowel-vowel, governed by the guṇa/vṛddhi vowel-gradation series), vyañjana sandhi (consonant-consonant, governing voicing and place assimilation), and visarga sandhi (governing the aspirate ḥ before a following sound). These rules are not pronunciation guidance but load-bearing grammar: a compound read without correct sandhi resolution is read as a different, frequently ill-formed, sequence of words.</p>
-      <p><span class="term">Samāsa</span> (compounding) supplies the primary technology by which classical kāvya achieves its characteristic syllable-density: tatpuruṣa (determinative), karmadhāraya (descriptive), dvigu (numeral), bahuvrīhi (exocentric — "lotus-eyed" describing a possessor external to the compound, not the eyes themselves), dvandva (copulative), and avyayībhāva (adverbial). A bahuvrīhi compound of a dozen members, not uncommon in classical poetry, performs the syntactic work of a full relative clause while metrically occupying the space of a single declinable word — the single largest resource available to a poet composing under fixed metrical constraint (§2.7).</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">2.6</span> Nirukta <span class="dev">निरुक्त</span> — Etymology as Hermeneutic Method, Not Antiquarian Curiosity</h3>
-      <p>Yāska's Nirukta advances a stronger claim than that words possess origins: it holds that a word's meaning is not fully recoverable independent of its derivation, and organizes obscure Vedic vocabulary into semantic classes precisely so that an unfamiliar term can be resolved by tracing it to a known root-sense. Nirukta is also the point at which the tradition first formalizes a distinction later inherited by dhvani theory (§8.1): between a name assigned for an incidental historical reason and a name that transparently states its referent's essential nature — an early ancestor of the abhidhā/lakṣaṇā (literal/secondary-sense) distinction Alaṃkāraśāstra formalizes centuries afterward.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">2.7</span> Chandas <span class="dev">छन्दस्</span> — Metrical Science and Its Combinatorial Substrate</h3>
-      <p>Vedic meter is counted purely by syllable — gāyatrī (24 syllables), anuṣṭubh (32, the epic śloka's base form), triṣṭubh (44), jagatī (48). Piṅgala's Chandaḥśāstra, governing classical kāvya meter, adds a second constraint layer: a fixed sequence of laghu (light) and guru (heavy) syllable-weights within the line, generating named vṛttas — vasantatilakā, mandākrāntā, śārdūlavikrīḍita — each carrying, by long convention, an associated emotional register (mandākrāntā with viraha, separation-longing, as employed throughout Kālidāsa's Meghadūta).</p>
-      <p class="dim">Piṅgala's method for enumerating every possible laghu-guru pattern of a given length — building longer patterns from shorter ones through a doubling-and-rule procedure — has been identified by historians of mathematics as containing, in embryonic form, both binary enumeration and a numerical sequence equivalent in structure to what is now called the Fibonacci sequence, arrived at for a purely prosodic purpose several centuries before either was studied in that form in any other tradition.</p>
-    </div>
-  </div>
-
-  <!-- PART III -->
-  <div class="part" id="p3">
-    <div class="partlabel">Part III</div>
-    <h2>From Grammar to a Science of Sound</h2>
-    <p class="partdek">Nāda, vāk, sphoṭa, śruti-svara, jāti-mūrcchanā.</p>
-
-    <div class="subsec">
-      <h3><span class="num">3.1</span> Nāda <span class="dev">नाद</span> as Ontological Substance</h3>
-      <p>The gāndharva chapters of the Nāṭyaśāstra, read alongside the later Saṅgīta Ratnākāra, treat sound-vibration (nāda) not as a communicative signal but as a graded physical substance, split into <span class="term">anāhata nāda</span> (unstruck, unmanifest, the subtlest possible vibration) and <span class="term">āhata nāda</span> (struck, audible, produced by contact — breath against the vocal apparatus, a stick against a drum-head). This is a direct extension of the argument in §2.1: Śikṣā already treats sound as a physical event with a specific mechanism and location in the vocal tract; the gāndharva material extends that treatment outward from phoneme to a general cosmological gradient running from subtlest vibration to fully manifest speech.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">3.2</span> Bhartṛhari's Vākyapadīya — Śabda-Brahman and the Four Levels of Vāk</h3>
-      <p>Bhartṛhari's Vākyapadīya advances the tradition's most philosophically ambitious claim on this subject: that ultimate reality is itself of the nature of word/sound (<span class="term">śabda-brahman</span>), and that the manifest universe is a graded unfolding (<span class="term">vivarta</span>) of that single verbal-sonic principle. The text develops this through four levels of speech: <span class="term">parā</span> (undifferentiated, prior to any division into word or meaning), <span class="term">paśyantī</span> ("seeing" speech — an idea grasped as one undivided flash, prior to sequential articulation), <span class="term">madhyamā</span> (intermediate, mentally sequenced but not yet uttered), and <span class="term">vaikharī</span> (fully articulated, audible speech).</p>
-      <div class="argbox">
-        <span class="label">Argumentative claim</span>
-        Formal grammar (Part II) addresses only vaikharī, the fully articulated output. Nāṭya's abhinaya — āṅgika, vācika, āhārya, sāttvika acting jointly (§6.4) — is constructed to work at all four levels simultaneously, using vaikharī only as an entry point: the performer's aim, on this reading, is to move a spectator closer to paśyantī, the pre-verbal unified flash of rasa, not merely to deliver a parseable spoken line.
-      </div>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">3.3</span> Sphoṭa <span class="dev">स्फोट</span> and the Mīmāṃsā Controversy</h3>
-      <p>Bhartṛhari's sphoṭa doctrine resolves a specific problem the phoneme-sequence model leaves open: if a word is perceived as a temporal sequence of discrete sounds, at what point does meaning occur, given that no single sound in the sequence carries it independently? Bhartṛhari's answer is that the audible sequence (dhvani, in this technical grammatical sense — sound as vehicle) is separate from the actual meaning-bearing unit, the <span class="term">sphoṭa</span>, grasped by the mind as a single non-sequential flash once the sequence completes, rather than assembled incrementally. Three levels are proposed: varṇa-sphoṭa (phoneme-level), pada-sphoṭa (word-level), and vākya-sphoṭa (sentence-level, understood as one undivided meaning-unit, <span class="term">akhaṇḍa-vākyārtha</span>).</p>
-      <p class="dim">This last claim was directly and substantially contested by the Mīmāṃsā school. Kumārila Bhaṭṭa and Prabhākara, from differing positions within that school, held that sentence-meaning is compositionally assembled from the meanings of its individually meaningful constituent words, not grasped as an antecedent whole — one of classical India's most sustained and technically developed disputes in the philosophy of language, and one this paper does not resolve, noting only that it directly conditions how later dhvani theory (§8.1) can claim a meaning existing "beyond" a sentence's compositional sense without that claim collapsing into either position by default.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">3.4</span> Śruti-Svara Derivation</h3>
-      <p>The Nāṭyaśāstra's gāndharva chapters divide the octave into twenty-two <span class="term">śruti</span> (audible microtonal intervals, of unequal size), and derive the seven <span class="term">svara</span> — ṣaḍja, ṛṣabha, gāndhāra, madhyama, pañcama, dhaivata, niṣāda — by assigning each svara a specific consecutive-śruti count, traditionally rendered as a 4-3-2-4-4-3-2 distribution across the seven notes. The method is structurally identical to the Māheśvara Sūtras' pratyāhāra mechanism (§2.2): a small set of primitive units combined under fixed rule to generate a larger, named expressive set.</p>
-      <p class="dim">The two principal scale-frameworks derived from this system, ṣaḍja-grāma and madhyama-grāma, differ only in the redistribution of a single śruti between two adjacent notes — a difference nearly inaudible in isolation, yet sufficient to define two non-interchangeable melodic universes, mirroring the sensitivity a single sandhi rule shows in altering a compound's entire reading (§2.5).</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">3.5</span> Jāti and Mūrcchanā — the Pre-Rāga Architecture</h3>
-      <p>Prior to the historical standardization of the rāga system — a later development the Nāṭyaśāstra itself does not use — melody is organized through <span class="term">jāti</span>, some eighteen named scalar-melodic types each defined by graha (starting note), aṃśa (predominant note), and nyāsa (closing note), and <span class="term">mūrcchanā</span>, the systematic cyclic permutation of a seven-note scale from each of its seven degrees in turn, generating seven distinct orderings from one base note-set. Sāraṅgadeva's Saṅgīta Ratnākāra (13th century) is conventionally credited with the historical transition from this jāti-mūrcchanā framework toward the rāga system still in use in Hindustani and Carnatic practice — meaning the Nāṭyaśāstra's musical material is properly read as an intermediate stage of the tradition this paper traces, not its terminus.</p>
-    </div>
-  </div>
-
-  <div class="divider">✦ ✦ ✦</div>
-
-  <!-- PART IV -->
-  <div class="part" id="p4">
-    <div class="partlabel">Part IV</div>
-    <h2>Nāṭyotpatti — The Origin of Drama</h2>
-    <p class="partdek">A textually specified origin-event, not decorative myth.</p>
-
-    <div class="subsec">
-      <h3><span class="num">4.1</span> Brahmā's Extraction of the Fifth Veda</h3>
-      <p>Chapter 1 of the Nāṭyaśāstra (<span class="cite">NŚ 1</span>) supplies an explicit causal account, not a poetic gesture. In a declining age, marked by the text's own diagnosis of rising kāma, lobha, krodha, and mātsarya (desire, greed, anger, envy), the gods petition Brahmā for a form of instruction accessible to all four varṇas, including śūdras, who were barred from direct study of the four Vedas. Brahmā's response is the composition of a fifth Veda, Nāṭyaveda, formed by extraction from the existing four:</p>
-      <table class="datatable">
-        <tr><th>Extracted element</th><th class="dev">Term</th><th>Source Veda</th></tr>
-        <tr><td>Recitable text</td><td class="dev">पाठ्य (pāṭhya)</td><td>Ṛgveda</td></tr>
-        <tr><td>Song / music</td><td class="dev">गीत (gīta)</td><td>Sāmaveda</td></tr>
-        <tr><td>Histrionic representation</td><td class="dev">अभिनय (abhinaya)</td><td>Yajurveda</td></tr>
-        <tr><td>Aesthetic sentiment</td><td class="dev">रस (rasa)</td><td>Atharvaveda</td></tr>
-      </table>
-      <p class="dim">The doctrinal weight of this account rests on its explicitly stated purpose: instruction (dharma, artha, yaśa, hita) delivered through what can be seen and felt, for an audience the source Vedas were structurally unable to reach. This is the textual basis for Nāṭya's self-description as <span class="term">sarvavarṇika</span>, open to every caste — a claim examined against material evidence at §7.2.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">4.2</span> The Indra-Dhvaja Narrative and the Asura Disruption</h3>
-      <p>Brahmā transmits the completed Nāṭyaveda to Bharata and his hundred sons, who stage its first performance at Indra's dhvaja-mahotsava (banner festival), dramatizing the amṛta-manthana (churning of the ocean) and the defeat of the asuras by the gods. The asuras, provoked by the re-enactment of their own defeat, disrupt the performance through magical obstruction. The text presents this disruption, rather than any aesthetic failure, as the specific narrative cause requiring a properly constructed nāṭyagṛha (playhouse) with defined protective and architectural specifications — meaning the treatise's stage-architecture chapters are framed as a direct narrative consequence of the origin account, not an independent technical appendix.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">4.3</span> Tāṇḍava and Lāsya as Narrative-Embedded Technical Response</h3>
-      <p>Following the asura disruption, Bharata petitions Śiva for movement vocabulary adequate to represent violent, non-domestic content, receiving the tāṇḍava; Śiva's consort Pārvatī reciprocally imparts the lāsya, its gentler counterpart. The tāṇḍava/lāsya pairing central to later dance vocabulary is thus embedded in the origin narrative itself as a direct response to a specific dramaturgical gap the first performance is said to have exposed, rather than introduced as an independent classificatory device.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">4.4</span> Political Theology of Sarvavarṇika</h3>
-      <p>Read as political theology rather than pure aesthetics, the nāṭyotpatti account performs specific ideological work: it locates the justification for cross-caste access to instruction not in a claim about caste itself, but in a claim about the differential accessibility of two transmission media — recitation-and-memorization (restricted, vertical) versus seen-and-felt performance (open, horizontal). §7.2 tests this claim against the independent material evidence of Aśokan epigraphy, which shows the same vertical/horizontal split operating in an administrative rather than mythological register several centuries prior to the Nāṭyaśāstra's likely date of compilation.</p>
-    </div>
-  </div>
-
-  <!-- PART V -->
-  <div class="part" id="p5">
-    <div class="partlabel">Part V</div>
-    <h2>Kāvyotpatti — The Origin of Poetry</h2>
-    <p class="partdek">Grief crystallizing into form, and the later systematization of why that form matters.</p>
-
-    <div class="subsec">
-      <h3><span class="num">5.1</span> The Krauñca-Vadha Account and the Śoka–Śloka Mechanism</h3>
-      <p>The Rāmāyaṇa's Bāla Kāṇḍa preserves the tradition's principal origin-account for kāvya. Vālmīki, witnessing a hunter kill one of a mating pair of krauñca birds, hears the surviving bird's grief-cry and produces, unbidden, the first metrically perfect śloka:</p>
-      <blockquote class="src">
-        <span class="devq">मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीः समाः ।<br>यत्क्रौञ्चमिथुनादेकम् अवधीः काममोहितम् ॥</span>
-        <cite>Rāmāyaṇa, Bāla Kāṇḍa</cite>
-      </blockquote>
-      <p>The traditional gloss on this moment specifies mechanism, not merely occasion: <span class="term">śoka</span> (grief) becomes <span class="term">śloka</span> (verse), a paronomasia the tradition treats as doctrinal rather than incidental wordplay. The argumentative claim embedded in the account is that metrical form is not a decoration subsequently applied to raw emotion; it is what sufficiently intense emotion becomes when voiced through a mind already saturated in Chandas (§2.7) — a claim this paper reads as continuous with, not merely analogous to, the Nāṭyaśāstra's own rasa doctrine (Part VI), since both locate the origin of aesthetic form in a witnessed emotional event crystallizing into structured sound rather than in deliberate technical invention.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">5.2</span> Mammaṭa's Systematization of Kāvya's Purpose</h3>
-      <p>Later Alaṃkāraśāstra generalizes the origin account into an explicit theory of purpose. Mammaṭa's Kāvyaprakāśa enumerates kāvya's benefits as parallel to, yet distinct from, the Veda's own fourfold aim: <span class="term">yaśas</span> (fame accruing to the poet), <span class="term">artha</span> (material benefit, historically through patronage), <span class="term">vyavahāra-jñāna</span> (practical worldly knowledge absorbed painlessly through narrative rather than direct injunction), instruction delivered, in Mammaṭa's own simile, <span class="term">kāntā-sammitam</span> — "as a beloved instructs," pleasurably and indirectly, unlike a śāstra's direct command — and finally <span class="term">sadyaḥ-paranirvṛti</span>, immediate aesthetic delight as an end in itself.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">5.3</span> Rājaśekhara's Pratibhā Doctrine</h3>
-      <p>Rājaśekhara's Kāvyamīmāṃsā addresses a distinct question the Vālmīki account leaves open — not why poetry exists, but whence a specific poet's creative capacity arises — distinguishing <span class="term">sahajā pratibhā</span> (innate creative genius) from <span class="term">āhāryā pratibhā</span> (capacity cultivated through training, sustained study of prior poets, and disciplined practice), and declining to resolve the question by treating poetic gift as purely inborn or purely acquired.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">5.4</span> Kāvyotpatti and Nāṭyotpatti Compared</h3>
-      <p>The two origin-accounts converge on structure — an origin-event triggered by witnessed extremity (grief at a killing; a declining age's moral crisis) resolving into a codified form — but diverge on register and audience. Kāvyotpatti is individual, spontaneous, and initially private (a single poet's unbidden utterance, subsequently transmitted through a disciple); nāṭyotpatti is institutional, commissioned, and initially public (a text composed by Brahmā at the gods' explicit request, for a stated cross-caste audience). This paper reads the two accounts as complementary rather than redundant: kāvya explains where poetic form comes from; nāṭya explains why that form was subsequently organized into a publicly accessible institution.</p>
-    </div>
-  </div>
-
-  <div class="divider">✦ ✦ ✦</div>
-
-  <!-- PART VI -->
-  <div class="part" id="p6">
-    <div class="partlabel">Part VI</div>
-    <h2>The Rasa System and Its Formal Apparatus</h2>
-    <p class="partdek">The sūtra, the nine rasas, the eight sāttvika bhāvas, the four abhinaya channels, and genre as rasa-permission architecture.</p>
-
-    <div class="subsec">
-      <h3><span class="num">6.1</span> The Rasa-Sūtra, Term by Term</h3>
-      <p>Bharata's foundational statement is compact and technically precise: <span class="devq">विभावानुभावव्यभिचारिसंयोगाद् रसनिष्पत्तिः</span> — rasa arises from the conjunction (<span class="term">saṃyoga</span>) of vibhāva, anubhāva, and vyabhicāribhāva (<span class="cite">NŚ 6</span>). <span class="term">Vibhāva</span> is the causal-situational determinant, subdivided into ālambana-vibhāva (the object of the emotion) and uddīpana-vibhāva (the stimulating circumstance surrounding it). <span class="term">Anubhāva</span> is the visible physical consequent — gesture, expression, deliberately produced. <span class="term">Vyabhicāribhāva</span> comprises the thirty-three named transient states (nirveda, glāni, śaṅkā, among others) that pass through and color a scene without themselves becoming its dominant note.</p>
-      <div class="argbox">
-        <span class="label">Argumentative claim</span>
-        The sūtra's technical force lies in insisting that no single component is sufficient. Only their specific conjunction, operating on an already-present sthāyibhāva (permanent underlying disposition) in the spectator, converts a represented situation into an aesthetically relished one — the exact point on which Bhaṭṭa Lollaṭa, Śaṅkuka, Bhaṭṭa Nāyaka, and Abhinavagupta subsequently diverge in explaining how, and in whom, rasa actually arises.
-      </div>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">6.2</span> The Nine Rasas and the Śānta Controversy</h3>
-      <table class="datatable">
-        <tr><th>Rasa</th><th class="dev">Term</th><th>Sthāyibhāva</th></tr>
-        <tr><td>Erotic / romantic</td><td class="dev">शृङ्गार</td><td>rati</td></tr>
-        <tr><td>Comic</td><td class="dev">हास्य</td><td>hāsa</td></tr>
-        <tr><td>Compassionate / sorrowful</td><td class="dev">करुण</td><td>śoka</td></tr>
-        <tr><td>Furious</td><td class="dev">रौद्र</td><td>krodha</td></tr>
-        <tr><td>Heroic</td><td class="dev">वीर</td><td>utsāha</td></tr>
-        <tr><td>Fearful</td><td class="dev">भयानक</td><td>bhaya</td></tr>
-        <tr><td>Disgusted</td><td class="dev">बीभत्स</td><td>jugupsā</td></tr>
-        <tr><td>Wondrous</td><td class="dev">अद्भुत</td><td>vismaya</td></tr>
-        <tr><td>Peaceful <span class="mono" style="font-size:11px">(contested, see below)</span></td><td class="dev">शान्त</td><td>śama</td></tr>
-      </table>
-      <p class="dim">Bharata's own text is ambiguous as to whether śānta belongs within the original scheme; its inclusion is argued for by Udbhaṭa and, most influentially, by Abhinavagupta, on the grounds that spiritual repose underlies and makes possible the aesthetic completion of all eight other rasas. This paper flags the inclusion as a documented historical addition rather than treating the ninefold scheme as uniformly original to Bharata.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">6.3</span> The Eight Sāttvika Bhāvas as Involuntary Evidentiary Markers</h3>
-      <p>Distinct from anubhāva, which is deliberately produced, the eight sāttvika bhāvas — <span class="term">stambha</span> (paralysis), <span class="term">sveda</span> (perspiration), <span class="term">romāñca</span> (horripilation), <span class="term">svarabheda</span> (voice-break), <span class="term">vepathu</span> (trembling), <span class="term">vaivarṇya</span> (pallor), <span class="term">aśru</span> (tears), and <span class="term">pralaya</span> (a fainting-like dissolution of ordinary awareness) — are treated by the tradition as involuntary, and therefore as evidence that a performer's absorption is genuine rather than merely enacted. This evidentiary function is precisely why the doṣa (fault) taxonomy treats their absence, or their unconvincing production, as a distinct and nameable category of performance failure, separable from a simply mistimed or clumsy anubhāva.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">6.4</span> The Four Abhinaya Channels</h3>
-      <p><span class="term">Āṅgika</span> (bodily) abhinaya subdivides into aṅga (the six major limbs), pratyaṅga (secondary limbs), and upāṅga (minor limbs, chiefly facial and ocular, treated with disproportionately granular technical detail relative to their comparatively small muscle mass). <span class="term">Vācika</span> (verbal) abhinaya governs pitch, tempo, and register — including the Sanskrit/Prakrit assignment detailed at §7.1. <span class="term">Āhārya</span> (costume, makeup, ornament, stage property) is treated as a full technical subject, with specific colour convention (varṇa) assigned by character type and rasa. <span class="term">Sāttvika</span> abhinaya is the involuntary layer detailed at §6.3. The tradition's insistence on training all four jointly, rather than treating vācika as primary, is the practical enactment of the vāk-theory claim at §3.2: performance aims at paśyantī, and no single channel among the four is sufficient to carry a spectator there alone.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">6.5</span> Daśarūpaka — Genre as Rasa-Permission Architecture</h3>
-      <p>Dhanañjaya's Daśarūpaka, building on Bharata's own classification, names ten rūpaka (dramatic forms) differentiated by protagonist status, subject matter, and — critically — permitted tonal range: nāṭaka (major form, royal or divine protagonist), prakaraṇa (invented plot, ordinary protagonist), bhāṇa (monologue, typically a rogue narrating past adventures), vyāyoga (short, martial, minimal female presence, and structurally forbidden from foregrounding śṛṅgāra), samavakāra, ḍima, īhāmṛga (each governing specific rasa combinations), aṅka or utsṛṣṭikāṅka (single-act, frequently centred on grief), prahasana (farce), and vīthī (a minimal one- or two-character form). The classificatory principle is rasa-permission, not length or plot alone: selecting a dramatic form is already a rasa-level compositional decision, made before a single line of dialogue is composed.</p>
-    </div>
-  </div>
-
-  <!-- PART VII -->
-  <div class="part" id="p7">
-    <div class="partlabel">Part VII</div>
-    <h2>Historical Transmission and Material Evidence</h2>
-    <p class="partdek">Register on stage, epigraphy, canonical transmission, script evolution, oral pedagogy.</p>
-
-    <div class="subsec">
-      <h3><span class="num">7.1</span> Prakrit on Stage — the Full Sociolinguistic Register-Map</h3>
-      <p>Chapter 17's register-assignment rules (introduced at §1.3) constitute a complete sociolinguistic map, not an incidental stylistic convention. This paper reads the map as a full fifth characterizing channel operating alongside the four abhinaya channels of §6.4: register signalled social position, and frequently moral alignment, independent of and prior to plot confirmation, functioning within the drama exactly as costume colour convention (āhārya) did.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">7.2</span> Aśokan Epigraphy — Administrative Multilingualism as Independent Confirmation</h3>
-      <p>Aśoka's rock and pillar edicts (3rd century BCE) supply independent, non-literary confirmation of the vertical/horizontal transmission split argued for at §4.4. The edicts are not linguistically uniform: the Girnar (Gujarat), Kālsī (Uttarakhand), and Shāhbāzgaṛhī/Mānsehrā (northwest) versions carry substantially the same content in locally inflected Prakrit, with the northwestern versions rendered not in Brāhmī but in Kharoṣṭhī, a script of Aramaic-derived origin specific to the Gandhāra region. A single administrative message was thus deliberately rendered into whichever regional register and script would functionally reach a given local population, rather than issued once in a fixed classical form — public communication, in this period, meant meeting regional linguistic reality rather than asserting a single standard over it, several centuries prior to the Nāṭyaśāstra's own claim to occupy the same public register for aesthetic-emotional instruction.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">7.3</span> The Pali Canon as a Parallel Transmission-Control Case</h3>
-      <p>The Tipiṭaka's threefold structure — Vinaya Piṭaka (monastic discipline), Sutta Piṭaka (discourses), Abhidhamma Piṭaka (systematic doctrinal analysis) — was preserved orally for several centuries before written commitment (traditionally dated to the first century BCE, in Sri Lanka), relying on formulaic, repetition-based mnemonic architecture structurally comparable to Vedic pāṭha methods. Buddhaghosa's fifth-century commentarial work routinely glosses canonical Pali terms by tracing them to Sanskrit-cognate root senses — a direct, centuries-later application of the Nirukta method described at §2.6, demonstrating that derivational transparency remained a live interpretive tool well beyond the Sanskrit register in which it originated.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">7.4</span> Script Evolution — Brāhmī to Devanāgarī, Staged</h3>
-      <p>The path from Aśokan Brāhmī to standardized Devanāgarī proceeds through identifiable intermediate stages rather than a single transition. Gupta script (4th–6th century CE) is the first major stage, showing more rounded, cursive letterforms than the angular Aśokan Brāhmī. From Gupta script, two branches diverge: <span class="term">Siddhaṃ</span>, used extensively for Buddhist manuscript and mantra transmission and carried, via this specific route, into China and Japan, where it remains in specifically ritual use in Buddhist contexts today, long after its disuse in India itself; and <span class="term">Nāgarī</span>, which gradually standardizes into Devanāgarī by approximately the 7th–8th century. Devanāgarī preserves the abugida logic of its Brāhmī ancestor: the horizontal <span class="term">śirorekhā</span> (headline) binding a word into one visual unit, and conjunct ligatures (<span class="term">saṃyuktākṣara</span>) visually fusing consonant clusters exactly where sandhi (§2.5) fuses them phonetically.</p>
-      <p class="dim">Siddhaṃ's survival in East Asian ritual contexts, entirely decoupled from the spoken-register changes occurring in India across the same centuries, demonstrates that script and spoken register can dissociate completely — a script outliving every spoken form it was originally built to record.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">7.5</span> Guru-Śiṣya Paramparā as the Non-Manuscript Transmission Channel</h3>
-      <p>None of the preceding material survived by manuscript alone. The guru-śiṣya paramparā — sustained, daily, long-duration apprenticeship — carried practical knowledge a written text specifies only partially: precise recitation accent, karaṇa execution timing, rāga-specific ornamentation, none of which a static manuscript notation fully recovers. This is also the most plausible explanation for documented regional divergence among Nāṭyaśāstra manuscript recensions (the southern recension differing from northern recensions in chapter count and specific verse readings): a lineage-transmitted text accumulates local commentarial and performance-tradition influence in a way a purely manuscript-copied text, absent a living practice behind it, generally does not.</p>
-    </div>
-  </div>
-
-  <div class="divider">✦ ✦ ✦</div>
-
-  <!-- PART VIII -->
-  <div class="part" id="p8">
-    <div class="partlabel">Part VIII</div>
-    <h2>Synthesis: Dhvani as the Closing Argument</h2>
-    <p class="partdek">Where sphoṭa, rasa, and grammar converge on one claim.</p>
-
-    <div class="subsec">
-      <h3><span class="num">8.1</span> Abhidhā, Lakṣaṇā, Vyañjanā — the Three Operations of the Word</h3>
-      <p>Ānandavardhana's Dhvanyāloka names three distinct operations available to a word: <span class="term">abhidhā</span> (direct, literal denotation), <span class="term">lakṣaṇā</span> (secondary, metaphoric extension, invoked when the literal sense fails to fit its context), and <span class="term">vyañjanā</span> (suggestion — a further, evocative sense neither directly stated nor a straightforward metaphoric substitution, but implied). <span class="term">Dhvani</span> names poetry in which this third operation carries the primary aesthetic weight: what is suggested outweighs what is literally stated.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">8.2</span> Abhinavagupta's Rasa-Dhvani Synthesis</h3>
-      <p>Abhinavagupta's Locana commentary fuses this apparatus directly with the rasa-sūtra of §6.1: rasa itself, he argues, is the supreme form of dhvani — <span class="term">rasa-dhvani</span> — since rasa is never literally stated by a dramatic text (no play states outright that its audience now feels karuṇa) but is entirely suggested through the vibhāva–anubhāva–vyabhicāribhāva conjunction reaching a spectator whose sthāyibhāva is already prepared to receive it.</p>
-    </div>
-
-    <div class="subsec">
-      <h3><span class="num">8.3</span> Concluding Argument</h3>
-      <p>This paper's central claim, restated in its strongest form: sphoṭa (§3.3) holds that meaning is grasped whole, not built incrementally from a sequence of phonemes. Dhvani (§8.1) holds that the finest poetic meaning is suggested, not literally stated. Rasa (§6.1, §8.2) holds that the finest aesthetic experience is evoked in a prepared spectator, not directly depicted on stage. These are not three separate doctrines that happen to resemble one another; they are three domain-specific restatements — linguistic-philosophical, literary-critical, dramaturgical — of a single governing conviction this paper has traced from Śikṣā's phonetic matrix onward: that the surface of sound and word is a lawful, rule-governed compression of something more granular and more consequential beneath it, recoverable only by a reader or spectator trained to know the rule.</p>
-    </div>
-  </div>
-
-  <!-- BIBLIOGRAPHY -->
-  <div class="bib" id="bib">
-    <h2>Working Bibliography</h2>
-    <ol>
-      <li><span class="primary">Nāṭyaśāstra</span>, attributed to Bharata Muni — primary source for Parts III (gāndharva chapters), IV, VI, VII.1.</li>
-      <li><span class="primary">Aṣṭādhyāyī</span>, Pāṇini — primary source for Part II.2–2.4; commentarial tradition via Kātyāyana's Vārttikas and Patañjali's Mahābhāṣya.</li>
-      <li><span class="primary">Vākyapadīya</span>, Bhartṛhari — primary source for Part III.2–3.3.</li>
-      <li><span class="primary">Rāmāyaṇa</span> (Bāla Kāṇḍa), attributed to Vālmīki — primary source for Part V.1.</li>
-      <li><span class="primary">Dhvanyāloka</span>, Ānandavardhana, with the <span class="primary">Locana</span> commentary of Abhinavagupta — primary source for Part VIII.</li>
-      <li><span class="primary">Kāvyaprakāśa</span>, Mammaṭa — Part V.2.</li>
-      <li><span class="primary">Kāvyamīmāṃsā</span>, Rājaśekhara — Part V.3.</li>
-      <li><span class="primary">Daśarūpaka</span>, Dhanañjaya — Part VI.5.</li>
-      <li><span class="primary">Prākṛta-Prakāśa</span>, Vararuci — Part I.1, VII.1.</li>
-      <li><span class="primary">Saṅgīta Ratnākara</span>, Śārṅgadeva — Part III.5.</li>
-      <li>Aśokan rock and pillar edicts (Girnar, Kālsī, Shāhbāzgaṛhī, Mānsehrā recensions) — Part VII.2.</li>
-      <li>Pali Tipiṭaka (Vinaya, Sutta, Abhidhamma Piṭaka), with Buddhaghosa's commentarial corpus — Part VII.3.</li>
-      <li>Ferguson, C., "Diglossia" (1959) — cited comparatively at Part I.1 to distinguish the register-stack model from classical diglossia theory.</li>
-    </ol>
-  </div>
-
-  <footer class="endnote">
-    <span class="devq">नादब्रह्म</span>
-    <p>working draft — comments and citation corrections welcome</p>
-  </footer>
-
-</div>
  <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -3081,6 +2587,499 @@ window.showTab = showTab;
   });
 })();
 </script>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nāda, Vāk, Śāstra — The Architecture of Sound in the Indic Tradition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Tiro+Devanagari+Hindi&family=JetBrains+Mono:wght@400;500&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f3efe4;
+    --ink: #241f19;
+    --ink-soft: #4a4235;
+    --rule: #c9bfa8;
+    --accent: #7a1f14;
+    --accent-soft: #8f5a2a;
+    --panel: #eae3d0;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family:'Source Serif 4', serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+  .dev{ font-family:'Tiro Devanagari Hindi', serif; }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+
+  .page{ max-width: 780px; margin: 0 auto; padding: 0 30px 120px; }
+
+  /* running header */
+  .runhead{
+    position: sticky; top:0; z-index:10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    padding: 10px 0;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: .06em;
+    color: var(--ink-soft);
+    display:flex; justify-content:space-between;
+  }
+  .runhead .wrap{ max-width:780px; margin:0 auto; padding:0 30px; display:flex; justify-content:space-between; width:100%; }
+
+  /* title block */
+  .titleblock{ padding: 64px 0 30px; border-bottom: 3px double var(--rule); }
+  .kicker{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing:.14em; text-transform:uppercase;
+    color: var(--accent-soft); margin-bottom: 18px;
+  }
+  h1.doctitle{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600; font-size: clamp(32px,5.4vw,46px);
+    line-height:1.15; margin:0 0 14px; color: var(--ink);
+  }
+  .subtitle{ font-size:18px; color: var(--ink-soft); font-style:italic; margin:0 0 26px; max-width:56ch; }
+  .meta{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--ink-soft); }
+
+  .abstract{
+    margin-top: 34px; padding: 22px 26px;
+    background: var(--panel);
+    border-left: 3px solid var(--accent);
+  }
+  .abstract .label{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--accent); display:block; margin-bottom:10px;
+  }
+  .abstract p{ margin:0; font-size:15.5px; color: var(--ink-soft); }
+
+  .toc{ padding: 30px 0 10px; }
+  .toc .label{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-soft); margin-bottom:14px; display:block;}
+  .toc ol{ margin:0; padding-left: 20px; columns: 1; font-size:14.5px; color: var(--ink-soft); }
+  .toc li{ margin-bottom:5px; }
+  .toc a{ color: var(--ink-soft); text-decoration:none; border-bottom:1px dotted var(--rule); }
+  .toc a:hover{ color: var(--accent); }
+
+  /* PARTS */
+  .part{ padding: 56px 0 10px; border-top: 2px solid var(--ink); margin-top: 40px; }
+  .part .partlabel{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:8px;
+  }
+  .part h2{
+    font-family:'Cormorant Garamond', serif; font-weight:600;
+    font-size: clamp(26px,4vw,32px); margin:0 0 8px; color:var(--ink);
+  }
+  .part .partdek{ font-size:15px; color:var(--ink-soft); font-style:italic; margin-bottom:10px; max-width:60ch; }
+
+  .subsec{ padding: 30px 0 4px; }
+  .subsec h3{
+    font-family:'Source Serif 4', serif; font-weight:600;
+    font-size: 20px; margin: 0 0 4px; color: var(--ink);
+    display:flex; align-items:baseline; gap:10px;
+  }
+  .subsec h3 .num{ font-family:'JetBrains Mono', monospace; color:var(--accent-soft); font-size:15px; }
+  .subsec h3 .dev{ color:var(--accent); font-size:0.8em; font-weight:400; margin-left:2px; }
+  .subsec p{ margin: 0 0 15px; text-align: justify; hyphens: auto; }
+  .subsec p.dim{ color: var(--ink-soft); }
+  .cite{ font-family:'JetBrains Mono', monospace; font-size: 13px; color: var(--accent-soft); white-space:nowrap; }
+  .term{ font-style: italic; color: var(--accent); }
+  .devq{ font-family:'Tiro Devanagari Hindi', serif; color: var(--ink); }
+
+  blockquote.src{
+    margin: 22px 0; padding: 18px 24px;
+    background: var(--panel); border-left: 3px solid var(--accent-soft);
+    font-size: 15.5px;
+  }
+  blockquote.src .devq{ display:block; font-size: 19px; line-height:1.85; margin-bottom:8px; }
+  blockquote.src cite{ font-style:normal; font-family:'JetBrains Mono', monospace; font-size:11.5px; color: var(--ink-soft); text-transform:uppercase; letter-spacing:.05em; }
+
+  table.datatable{
+    width:100%; border-collapse: collapse; margin: 20px 0 26px; font-size: 14.5px;
+  }
+  table.datatable th, table.datatable td{
+    border: 1px solid var(--rule); padding: 8px 10px; text-align:left; vertical-align: top;
+  }
+  table.datatable th{ background: var(--panel); font-weight:600; color:var(--ink); }
+  table.datatable td.dev{ color: var(--accent); }
+
+  .argbox{
+    margin: 24px 0; padding: 18px 22px;
+    border: 1px solid var(--ink); border-left: 4px solid var(--accent);
+  }
+  .argbox .label{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:8px; }
+
+  .divider{ text-align:center; margin: 40px 0; color: var(--rule); letter-spacing: 12px; font-size:12px; }
+
+  .bib{ padding: 50px 0; }
+  .bib h2{ font-family:'Cormorant Garamond', serif; font-weight:600; font-size:26px; margin:0 0 20px; }
+  .bib ol{ padding-left: 20px; font-size: 14.5px; color: var(--ink-soft); }
+  .bib li{ margin-bottom: 10px; }
+  .bib .primary{ color: var(--ink); font-weight:600; }
+
+  footer.endnote{ padding: 60px 0 20px; text-align:center; color: var(--ink-soft); font-size:13px; }
+  footer.endnote .devq{ display:block; font-size:20px; margin-bottom:8px; color:var(--accent); }
+
+  @media (max-width: 600px){
+    body{ font-size:16px; }
+    .subsec p{ text-align:left; hyphens:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="runhead"><div class="wrap">
+  <span>NĀDA · VĀK · ŚĀSTRA</span><span>WORKING PAPER</span>
+</div></div>
+
+<div class="page">
+
+  <div class="titleblock">
+    <div class="kicker">Working Paper · Indic Linguistics &amp; Dramaturgy</div>
+    <h1 class="doctitle">Nāda, Vāk, Śāstra: The Architecture of Sound in the Indic Linguistic and Dramaturgical Tradition</h1>
+    <p class="subtitle">Coexistence, grammatical precision, and the derivation of a science of sound from Śikṣā to the Nāṭyaśāstra — with an account of kāvyotpatti and nāṭyotpatti as textually specified origin-events rather than inherited metaphor.</p>
+    <div class="meta">Compiled from the Vedāṅga, Nāṭyaśāstra, and Alaṃkāraśāstra traditions · working draft</div>
+
+    <div class="abstract">
+      <span class="label">Abstract</span>
+      <p>This paper argues that the Indic tradition's treatment of sound is not a loose family of related ideas but a single derivational method applied at successive levels: phoneme, script, root, compound, meter, melody, meaning, and finally aesthetic emotion. Part I establishes the sociolinguistic ground — a genealogically layered register-stack (Sanskrit–Prakrit–Pali–Apabhraṃśa) bound by one script family (Brāhmī–Devanāgarī) rather than several. Part II details the specific grammatical apparatus — Śikṣā, the Māheśvara Sūtras, the Aṣṭādhyāyī, sandhi, samāsa, Nirukta, Chandas — that gives Sanskrit its derivational transparency. Part III shows how that apparatus is extended, by Bhartṛhari and the gāndharva chapters of the Nāṭyaśāstra, into a general theory of sound as ontological substance (nāda, vāk, sphoṭa) rather than mere communicative code. Parts IV and V examine the textually specified origin-accounts of drama (nāṭyotpatti) and poetry (kāvyotpatti) as doctrinally load-bearing narratives, not decorative myth. Part VI sets out the rasa system's formal apparatus in full technical detail. Part VII grounds the whole argument in material and historical evidence — epigraphy, canonical transmission, script evolution, oral pedagogy. Part VIII closes by showing that sphoṭa, dhvani, and rasa are three restatements of one claim: that the most consequential operation of sound and word occurs beneath their own audible or literal surface.</p>
+    </div>
+
+    <div class="toc">
+      <span class="label">Contents</span>
+      <ol>
+        <li><a href="#p1">Part I — Linguistic Coexistence in the Indic Ecumene</a></li>
+        <li><a href="#p2">Part II — The Grammatical Architecture of Sanskrit</a></li>
+        <li><a href="#p3">Part III — From Grammar to a Science of Sound</a></li>
+        <li><a href="#p4">Part IV — Nāṭyotpatti: The Origin of Drama</a></li>
+        <li><a href="#p5">Part V — Kāvyotpatti: The Origin of Poetry</a></li>
+        <li><a href="#p6">Part VI — The Rasa System and Its Formal Apparatus</a></li>
+        <li><a href="#p7">Part VII — Historical Transmission and Material Evidence</a></li>
+        <li><a href="#p8">Part VIII — Synthesis: Dhvani as the Closing Argument</a></li>
+        <li><a href="#bib">Working Bibliography</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- PART I -->
+  <div class="part" id="p1">
+    <div class="partlabel">Part I</div>
+    <h2>Linguistic Coexistence in the Indic Ecumene</h2>
+    <p class="partdek">A register-stack bound by one script family, not a set of competing languages.</p>
+
+    <div class="subsec">
+      <h3><span class="num">1.1</span> The Register-Stack Model</h3>
+      <p>The standard account of multilingual societies treats coexistence as either <span class="term">diglossic</span> (a fixed high/low functional split, per Ferguson's classical formulation) or <span class="term">contact-based</span> (languages borrowing from each other through trade and conquest). Neither model, applied without modification, captures the Indic case. The relevant unit is not two registers in stable opposition but a graded, four-stage genealogical descent — Sanskrit, Prakrit, Pali, Apabhraṃśa — in which each later stage is a measurable phonological and morphological simplification of the one before it: loss of case-ending distinctions, cluster simplification, vowel shortening. This paper terms this a <span class="term">register-stack</span> to distinguish it from a static diglossic split: the stack has direction, and that direction is one-way.</p>
+      <p class="dim">The evidentiary basis for treating this as genealogical rather than incidental is internal to the grammatical tradition itself: Prakrit grammars such as Vararuci's Prākṛta-Prakāśa do not describe Prakrit as an independent system but derive its forms rule-by-rule from a specified Sanskrit input, in a method structurally identical to Pāṇini's own derivation of surface forms from underlying roots (§2.3–2.4 below). Coexistence, on this reading, is a byproduct of an explicitly derivational grammatical culture applying its own method reflexively to its daughter registers.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">1.2</span> Sanskrit Held Apart, Prakrit Left to Drift</h3>
+      <p>A second feature distinguishes the Indic case from comparable stratified-register societies elsewhere: Sanskrit's grammar was fixed early and deliberately (Pāṇini, conventionally dated to the fourth century BCE), while Prakrit was left ungoverned by any comparably authoritative, prescriptive grammar until centuries later, and even then was codified <span class="term">descriptively</span>, as a record of attested regional usage, rather than <span class="term">prescriptively</span>, as a standard to be enforced. The asymmetry is functional, not accidental: a register intended for pan-regional scholarly and ritual transmission across centuries requires fixation against drift; a register intended for immediate popular and narrative use does not, and indeed benefits from the flexibility drift provides.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">1.3</span> Case Study — On-Stage Register Assignment as Institutionalized Coexistence</h3>
+      <p>The Nāṭyaśāstra's own dramaturgical practice supplies the clearest documentary case of this coexistence functioning as designed policy rather than passive social fact. Chapter 17 of the text (<span class="cite">NŚ 17</span>) assigns spoken register by character type within a single play: the fully Sanskrit register to kings, ministers, brāhmaṇas, and ascetics; Śaurasenī to queens and women of rank; Māgadhī to servants and lower attendants; Ardhamāgadhī to specific middling male roles; and Paiśācī, a register with a comparatively harsher consonantal profile, to demons and forest-dwelling or morally marked characters. This is treated in detail at §7.1 below; it is introduced here because it is the single clearest piece of evidence that the register-stack described in §1.1 was not merely observed by the tradition but actively deployed as a compositional and characterizing resource within the tradition's own central literary form.</p>
+      <div class="argbox">
+        <span class="label">Argumentative claim</span>
+        A spectator in Bharata's theatre read social position, and frequently moral alignment, directly off a character's register before any plot event confirmed it. Register functioned as characterization in the same manner āhārya (costume and makeup convention) did — this paper treats linguistic register, accordingly, as a fifth channel of characterization operating alongside the four canonical abhinaya channels detailed in Part VI.
+      </div>
+    </div>
+  </div>
+
+  <!-- PART II -->
+  <div class="part" id="p2">
+    <div class="partlabel">Part II</div>
+    <h2>The Grammatical Architecture of Sanskrit</h2>
+    <p class="partdek">Śikṣā, the Māheśvara Sūtras, the Aṣṭādhyāyī, sandhi, samāsa, Nirukta, Chandas.</p>
+
+    <div class="subsec">
+      <h3><span class="num">2.1</span> Śikṣā <span class="dev">शिक्षा</span> — Phonetics as Prescriptive Diagnostic, Not Description</h3>
+      <p>Śikṣā, the first Vedāṅga, does not merely catalogue the sounds of Sanskrit; it specifies them along three independent axes that a modern phonetic transcription typically folds into a single approximate symbol. <span class="term">Sthāna</span> (place of articulation) organizes consonants as kaṇṭhya (guttural), tālavya (palatal), mūrdhanya (retroflex), dantya (dental), oṣṭhya (labial) — an ordering directly reflected in the traditional alphabet sequence <span class="devq">क ख ग घ ङ</span>, moving systematically from throat to lips. <span class="term">Mātrā</span> (duration) distinguishes hrasva (short), dīrgha (long), and pluta (protracted) vowels as a three-way, not binary, timing category. <span class="term">Svara</span>, in this specific Vedic sense, denotes pitch-accent — udātta (raised), anudātta (unraised), svarita (falling) — preserved in Vedic recitation with a tolerance for error close to zero, since traditional doctrine held that a misplaced accent could invert a mantra's ritual efficacy (the frequently cited case is <span class="cite">indraśatru</span>, where accent placement alone determines whether the compound means "one whose enemy is Indra" or "one whose enemy is Indra himself").</p>
+      <p class="dim">The argumentative significance of this trebled specification is that Sanskrit phonetics is <span class="term">diagnostic</span> before it is descriptive: a reciter is trained against an explicit three-axis standard, not an impressionistic sense of correct pronunciation. §3.1 below shows this same three-axis discipline transferred, largely intact, into the Nāṭyaśāstra's vācika abhinaya training.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">2.2</span> The Māheśvara Sūtras — Compression as Precondition for Grammar</h3>
+      <p>Before a single grammatical rule is stated, the fourteen Māheśvara Sūtras re-organize the phoneme inventory into a structure built specifically for rule-writing efficiency: <span class="devq">अ इ उ ण् । ऋ ऌ क् । ए ओ ङ् । ऐ औ च् । ह य व र ट् ।</span> and nine further lines, each terminating in a silent marker consonant (<span class="term">it</span>) never pronounced in any actual word, whose sole function is to close that line's phoneme-set. This structure permits <span class="term">pratyāhāra</span> — reference to any contiguous span of lines by a two-syllable code formed from a start-phoneme and a closing it-marker: <span class="devq">अच्</span> (ac) denotes the entire vowel inventory; <span class="devq">हल्</span> (hal) denotes the entire consonant inventory. The Aṣṭādhyāyī's roughly 3,959 sūtras depend on this compression to remain a memorizable text; without it, each rule would need to spell out its applicable phoneme-set in full, multiplying the grammar's length by an order of magnitude.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">2.3</span> The Aṣṭādhyāyī <span class="dev">अष्टाध्यायी</span> — Rule Typology and the Anuvṛtti Mechanism</h3>
+      <p>Pāṇini's grammar organizes its rules into functionally distinct classes that the tradition names explicitly rather than leaving implicit: <span class="term">saṃjñā</span> (definitional rules assigning technical labels to be used elsewhere in the text), <span class="term">paribhāṣā</span> (interpretive meta-rules governing how other rules are to be read), <span class="term">vidhi</span> (operative rules prescribing an actual change), <span class="term">niyama</span> (restrictive rules narrowing an otherwise broader option), <span class="term">atideśa</span> (extension rules transferring a property from one case to a structurally analogous one), and <span class="term">adhikāra</span> (governing headings whose scope persists across a run of subsequent sūtras).</p>
+      <p>The mechanism that makes this typology load-bearing rather than merely taxonomic is <span class="term">anuvṛtti</span> — the silent carrying-forward of a word or condition stated in one sūtra into an unspecified number of following sūtras, until a later rule explicitly cancels or modifies it. Correct interpretation of any individual sūtra therefore requires reconstructing its full inherited context from potentially several sūtras prior — a design choice that trades local readability for global compression. Patañjali's Mahābhāṣya and Kātyāyana's Vārttikas exist substantially to adjudicate contested cases of exactly this scope-tracking problem: where anuvṛtti should and should not be understood to extend.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">2.4</span> Dhātu-Pratyaya Derivation and Semantic Transparency</h3>
+      <p>The Dhātupāṭha enumerates approximately two thousand verbal roots across ten conjugational classes (gaṇa). Nominal derivation proceeds from these roots via two suffix classes: <span class="term">kṛt</span> suffixes, forming nouns and adjectives directly from a verbal root (<span class="devq">कर्तृ</span>, kartṛ, "doer," from √kṛ plus the agentive suffix -tṛc), and <span class="term">taddhita</span> suffixes, forming secondary derivatives from an already-formed nominal base. The consequence for expression is that Sanskrit vocabulary is, to a degree unusual among natural languages, non-atomic: the words <span class="devq">कवि</span> (kavi, poet), <span class="devq">काव्य</span> (kāvya, poem), and <span class="devq">कविता</span> (kavitā, poetry) are transparently one root, √kū ("to sound, to praise"), under three distinct nominal derivations, recoverable by any grammatically trained reader without recourse to a dictionary.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">2.5</span> Sandhi and Samāsa — Compression as Compositional Technology</h3>
+      <p><span class="term">Sandhi</span> governs sound change at morpheme and word boundaries across three registers — svara sandhi (vowel-vowel, governed by the guṇa/vṛddhi vowel-gradation series), vyañjana sandhi (consonant-consonant, governing voicing and place assimilation), and visarga sandhi (governing the aspirate ḥ before a following sound). These rules are not pronunciation guidance but load-bearing grammar: a compound read without correct sandhi resolution is read as a different, frequently ill-formed, sequence of words.</p>
+      <p><span class="term">Samāsa</span> (compounding) supplies the primary technology by which classical kāvya achieves its characteristic syllable-density: tatpuruṣa (determinative), karmadhāraya (descriptive), dvigu (numeral), bahuvrīhi (exocentric — "lotus-eyed" describing a possessor external to the compound, not the eyes themselves), dvandva (copulative), and avyayībhāva (adverbial). A bahuvrīhi compound of a dozen members, not uncommon in classical poetry, performs the syntactic work of a full relative clause while metrically occupying the space of a single declinable word — the single largest resource available to a poet composing under fixed metrical constraint (§2.7).</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">2.6</span> Nirukta <span class="dev">निरुक्त</span> — Etymology as Hermeneutic Method, Not Antiquarian Curiosity</h3>
+      <p>Yāska's Nirukta advances a stronger claim than that words possess origins: it holds that a word's meaning is not fully recoverable independent of its derivation, and organizes obscure Vedic vocabulary into semantic classes precisely so that an unfamiliar term can be resolved by tracing it to a known root-sense. Nirukta is also the point at which the tradition first formalizes a distinction later inherited by dhvani theory (§8.1): between a name assigned for an incidental historical reason and a name that transparently states its referent's essential nature — an early ancestor of the abhidhā/lakṣaṇā (literal/secondary-sense) distinction Alaṃkāraśāstra formalizes centuries afterward.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">2.7</span> Chandas <span class="dev">छन्दस्</span> — Metrical Science and Its Combinatorial Substrate</h3>
+      <p>Vedic meter is counted purely by syllable — gāyatrī (24 syllables), anuṣṭubh (32, the epic śloka's base form), triṣṭubh (44), jagatī (48). Piṅgala's Chandaḥśāstra, governing classical kāvya meter, adds a second constraint layer: a fixed sequence of laghu (light) and guru (heavy) syllable-weights within the line, generating named vṛttas — vasantatilakā, mandākrāntā, śārdūlavikrīḍita — each carrying, by long convention, an associated emotional register (mandākrāntā with viraha, separation-longing, as employed throughout Kālidāsa's Meghadūta).</p>
+      <p class="dim">Piṅgala's method for enumerating every possible laghu-guru pattern of a given length — building longer patterns from shorter ones through a doubling-and-rule procedure — has been identified by historians of mathematics as containing, in embryonic form, both binary enumeration and a numerical sequence equivalent in structure to what is now called the Fibonacci sequence, arrived at for a purely prosodic purpose several centuries before either was studied in that form in any other tradition.</p>
+    </div>
+  </div>
+
+  <!-- PART III -->
+  <div class="part" id="p3">
+    <div class="partlabel">Part III</div>
+    <h2>From Grammar to a Science of Sound</h2>
+    <p class="partdek">Nāda, vāk, sphoṭa, śruti-svara, jāti-mūrcchanā.</p>
+
+    <div class="subsec">
+      <h3><span class="num">3.1</span> Nāda <span class="dev">नाद</span> as Ontological Substance</h3>
+      <p>The gāndharva chapters of the Nāṭyaśāstra, read alongside the later Saṅgīta Ratnākāra, treat sound-vibration (nāda) not as a communicative signal but as a graded physical substance, split into <span class="term">anāhata nāda</span> (unstruck, unmanifest, the subtlest possible vibration) and <span class="term">āhata nāda</span> (struck, audible, produced by contact — breath against the vocal apparatus, a stick against a drum-head). This is a direct extension of the argument in §2.1: Śikṣā already treats sound as a physical event with a specific mechanism and location in the vocal tract; the gāndharva material extends that treatment outward from phoneme to a general cosmological gradient running from subtlest vibration to fully manifest speech.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">3.2</span> Bhartṛhari's Vākyapadīya — Śabda-Brahman and the Four Levels of Vāk</h3>
+      <p>Bhartṛhari's Vākyapadīya advances the tradition's most philosophically ambitious claim on this subject: that ultimate reality is itself of the nature of word/sound (<span class="term">śabda-brahman</span>), and that the manifest universe is a graded unfolding (<span class="term">vivarta</span>) of that single verbal-sonic principle. The text develops this through four levels of speech: <span class="term">parā</span> (undifferentiated, prior to any division into word or meaning), <span class="term">paśyantī</span> ("seeing" speech — an idea grasped as one undivided flash, prior to sequential articulation), <span class="term">madhyamā</span> (intermediate, mentally sequenced but not yet uttered), and <span class="term">vaikharī</span> (fully articulated, audible speech).</p>
+      <div class="argbox">
+        <span class="label">Argumentative claim</span>
+        Formal grammar (Part II) addresses only vaikharī, the fully articulated output. Nāṭya's abhinaya — āṅgika, vācika, āhārya, sāttvika acting jointly (§6.4) — is constructed to work at all four levels simultaneously, using vaikharī only as an entry point: the performer's aim, on this reading, is to move a spectator closer to paśyantī, the pre-verbal unified flash of rasa, not merely to deliver a parseable spoken line.
+      </div>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">3.3</span> Sphoṭa <span class="dev">स्फोट</span> and the Mīmāṃsā Controversy</h3>
+      <p>Bhartṛhari's sphoṭa doctrine resolves a specific problem the phoneme-sequence model leaves open: if a word is perceived as a temporal sequence of discrete sounds, at what point does meaning occur, given that no single sound in the sequence carries it independently? Bhartṛhari's answer is that the audible sequence (dhvani, in this technical grammatical sense — sound as vehicle) is separate from the actual meaning-bearing unit, the <span class="term">sphoṭa</span>, grasped by the mind as a single non-sequential flash once the sequence completes, rather than assembled incrementally. Three levels are proposed: varṇa-sphoṭa (phoneme-level), pada-sphoṭa (word-level), and vākya-sphoṭa (sentence-level, understood as one undivided meaning-unit, <span class="term">akhaṇḍa-vākyārtha</span>).</p>
+      <p class="dim">This last claim was directly and substantially contested by the Mīmāṃsā school. Kumārila Bhaṭṭa and Prabhākara, from differing positions within that school, held that sentence-meaning is compositionally assembled from the meanings of its individually meaningful constituent words, not grasped as an antecedent whole — one of classical India's most sustained and technically developed disputes in the philosophy of language, and one this paper does not resolve, noting only that it directly conditions how later dhvani theory (§8.1) can claim a meaning existing "beyond" a sentence's compositional sense without that claim collapsing into either position by default.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">3.4</span> Śruti-Svara Derivation</h3>
+      <p>The Nāṭyaśāstra's gāndharva chapters divide the octave into twenty-two <span class="term">śruti</span> (audible microtonal intervals, of unequal size), and derive the seven <span class="term">svara</span> — ṣaḍja, ṛṣabha, gāndhāra, madhyama, pañcama, dhaivata, niṣāda — by assigning each svara a specific consecutive-śruti count, traditionally rendered as a 4-3-2-4-4-3-2 distribution across the seven notes. The method is structurally identical to the Māheśvara Sūtras' pratyāhāra mechanism (§2.2): a small set of primitive units combined under fixed rule to generate a larger, named expressive set.</p>
+      <p class="dim">The two principal scale-frameworks derived from this system, ṣaḍja-grāma and madhyama-grāma, differ only in the redistribution of a single śruti between two adjacent notes — a difference nearly inaudible in isolation, yet sufficient to define two non-interchangeable melodic universes, mirroring the sensitivity a single sandhi rule shows in altering a compound's entire reading (§2.5).</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">3.5</span> Jāti and Mūrcchanā — the Pre-Rāga Architecture</h3>
+      <p>Prior to the historical standardization of the rāga system — a later development the Nāṭyaśāstra itself does not use — melody is organized through <span class="term">jāti</span>, some eighteen named scalar-melodic types each defined by graha (starting note), aṃśa (predominant note), and nyāsa (closing note), and <span class="term">mūrcchanā</span>, the systematic cyclic permutation of a seven-note scale from each of its seven degrees in turn, generating seven distinct orderings from one base note-set. Sāraṅgadeva's Saṅgīta Ratnākāra (13th century) is conventionally credited with the historical transition from this jāti-mūrcchanā framework toward the rāga system still in use in Hindustani and Carnatic practice — meaning the Nāṭyaśāstra's musical material is properly read as an intermediate stage of the tradition this paper traces, not its terminus.</p>
+    </div>
+  </div>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- PART IV -->
+  <div class="part" id="p4">
+    <div class="partlabel">Part IV</div>
+    <h2>Nāṭyotpatti — The Origin of Drama</h2>
+    <p class="partdek">A textually specified origin-event, not decorative myth.</p>
+
+    <div class="subsec">
+      <h3><span class="num">4.1</span> Brahmā's Extraction of the Fifth Veda</h3>
+      <p>Chapter 1 of the Nāṭyaśāstra (<span class="cite">NŚ 1</span>) supplies an explicit causal account, not a poetic gesture. In a declining age, marked by the text's own diagnosis of rising kāma, lobha, krodha, and mātsarya (desire, greed, anger, envy), the gods petition Brahmā for a form of instruction accessible to all four varṇas, including śūdras, who were barred from direct study of the four Vedas. Brahmā's response is the composition of a fifth Veda, Nāṭyaveda, formed by extraction from the existing four:</p>
+      <table class="datatable">
+        <tr><th>Extracted element</th><th class="dev">Term</th><th>Source Veda</th></tr>
+        <tr><td>Recitable text</td><td class="dev">पाठ्य (pāṭhya)</td><td>Ṛgveda</td></tr>
+        <tr><td>Song / music</td><td class="dev">गीत (gīta)</td><td>Sāmaveda</td></tr>
+        <tr><td>Histrionic representation</td><td class="dev">अभिनय (abhinaya)</td><td>Yajurveda</td></tr>
+        <tr><td>Aesthetic sentiment</td><td class="dev">रस (rasa)</td><td>Atharvaveda</td></tr>
+      </table>
+      <p class="dim">The doctrinal weight of this account rests on its explicitly stated purpose: instruction (dharma, artha, yaśa, hita) delivered through what can be seen and felt, for an audience the source Vedas were structurally unable to reach. This is the textual basis for Nāṭya's self-description as <span class="term">sarvavarṇika</span>, open to every caste — a claim examined against material evidence at §7.2.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">4.2</span> The Indra-Dhvaja Narrative and the Asura Disruption</h3>
+      <p>Brahmā transmits the completed Nāṭyaveda to Bharata and his hundred sons, who stage its first performance at Indra's dhvaja-mahotsava (banner festival), dramatizing the amṛta-manthana (churning of the ocean) and the defeat of the asuras by the gods. The asuras, provoked by the re-enactment of their own defeat, disrupt the performance through magical obstruction. The text presents this disruption, rather than any aesthetic failure, as the specific narrative cause requiring a properly constructed nāṭyagṛha (playhouse) with defined protective and architectural specifications — meaning the treatise's stage-architecture chapters are framed as a direct narrative consequence of the origin account, not an independent technical appendix.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">4.3</span> Tāṇḍava and Lāsya as Narrative-Embedded Technical Response</h3>
+      <p>Following the asura disruption, Bharata petitions Śiva for movement vocabulary adequate to represent violent, non-domestic content, receiving the tāṇḍava; Śiva's consort Pārvatī reciprocally imparts the lāsya, its gentler counterpart. The tāṇḍava/lāsya pairing central to later dance vocabulary is thus embedded in the origin narrative itself as a direct response to a specific dramaturgical gap the first performance is said to have exposed, rather than introduced as an independent classificatory device.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">4.4</span> Political Theology of Sarvavarṇika</h3>
+      <p>Read as political theology rather than pure aesthetics, the nāṭyotpatti account performs specific ideological work: it locates the justification for cross-caste access to instruction not in a claim about caste itself, but in a claim about the differential accessibility of two transmission media — recitation-and-memorization (restricted, vertical) versus seen-and-felt performance (open, horizontal). §7.2 tests this claim against the independent material evidence of Aśokan epigraphy, which shows the same vertical/horizontal split operating in an administrative rather than mythological register several centuries prior to the Nāṭyaśāstra's likely date of compilation.</p>
+    </div>
+  </div>
+
+  <!-- PART V -->
+  <div class="part" id="p5">
+    <div class="partlabel">Part V</div>
+    <h2>Kāvyotpatti — The Origin of Poetry</h2>
+    <p class="partdek">Grief crystallizing into form, and the later systematization of why that form matters.</p>
+
+    <div class="subsec">
+      <h3><span class="num">5.1</span> The Krauñca-Vadha Account and the Śoka–Śloka Mechanism</h3>
+      <p>The Rāmāyaṇa's Bāla Kāṇḍa preserves the tradition's principal origin-account for kāvya. Vālmīki, witnessing a hunter kill one of a mating pair of krauñca birds, hears the surviving bird's grief-cry and produces, unbidden, the first metrically perfect śloka:</p>
+      <blockquote class="src">
+        <span class="devq">मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीः समाः ।<br>यत्क्रौञ्चमिथुनादेकम् अवधीः काममोहितम् ॥</span>
+        <cite>Rāmāyaṇa, Bāla Kāṇḍa</cite>
+      </blockquote>
+      <p>The traditional gloss on this moment specifies mechanism, not merely occasion: <span class="term">śoka</span> (grief) becomes <span class="term">śloka</span> (verse), a paronomasia the tradition treats as doctrinal rather than incidental wordplay. The argumentative claim embedded in the account is that metrical form is not a decoration subsequently applied to raw emotion; it is what sufficiently intense emotion becomes when voiced through a mind already saturated in Chandas (§2.7) — a claim this paper reads as continuous with, not merely analogous to, the Nāṭyaśāstra's own rasa doctrine (Part VI), since both locate the origin of aesthetic form in a witnessed emotional event crystallizing into structured sound rather than in deliberate technical invention.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">5.2</span> Mammaṭa's Systematization of Kāvya's Purpose</h3>
+      <p>Later Alaṃkāraśāstra generalizes the origin account into an explicit theory of purpose. Mammaṭa's Kāvyaprakāśa enumerates kāvya's benefits as parallel to, yet distinct from, the Veda's own fourfold aim: <span class="term">yaśas</span> (fame accruing to the poet), <span class="term">artha</span> (material benefit, historically through patronage), <span class="term">vyavahāra-jñāna</span> (practical worldly knowledge absorbed painlessly through narrative rather than direct injunction), instruction delivered, in Mammaṭa's own simile, <span class="term">kāntā-sammitam</span> — "as a beloved instructs," pleasurably and indirectly, unlike a śāstra's direct command — and finally <span class="term">sadyaḥ-paranirvṛti</span>, immediate aesthetic delight as an end in itself.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">5.3</span> Rājaśekhara's Pratibhā Doctrine</h3>
+      <p>Rājaśekhara's Kāvyamīmāṃsā addresses a distinct question the Vālmīki account leaves open — not why poetry exists, but whence a specific poet's creative capacity arises — distinguishing <span class="term">sahajā pratibhā</span> (innate creative genius) from <span class="term">āhāryā pratibhā</span> (capacity cultivated through training, sustained study of prior poets, and disciplined practice), and declining to resolve the question by treating poetic gift as purely inborn or purely acquired.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">5.4</span> Kāvyotpatti and Nāṭyotpatti Compared</h3>
+      <p>The two origin-accounts converge on structure — an origin-event triggered by witnessed extremity (grief at a killing; a declining age's moral crisis) resolving into a codified form — but diverge on register and audience. Kāvyotpatti is individual, spontaneous, and initially private (a single poet's unbidden utterance, subsequently transmitted through a disciple); nāṭyotpatti is institutional, commissioned, and initially public (a text composed by Brahmā at the gods' explicit request, for a stated cross-caste audience). This paper reads the two accounts as complementary rather than redundant: kāvya explains where poetic form comes from; nāṭya explains why that form was subsequently organized into a publicly accessible institution.</p>
+    </div>
+  </div>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- PART VI -->
+  <div class="part" id="p6">
+    <div class="partlabel">Part VI</div>
+    <h2>The Rasa System and Its Formal Apparatus</h2>
+    <p class="partdek">The sūtra, the nine rasas, the eight sāttvika bhāvas, the four abhinaya channels, and genre as rasa-permission architecture.</p>
+
+    <div class="subsec">
+      <h3><span class="num">6.1</span> The Rasa-Sūtra, Term by Term</h3>
+      <p>Bharata's foundational statement is compact and technically precise: <span class="devq">विभावानुभावव्यभिचारिसंयोगाद् रसनिष्पत्तिः</span> — rasa arises from the conjunction (<span class="term">saṃyoga</span>) of vibhāva, anubhāva, and vyabhicāribhāva (<span class="cite">NŚ 6</span>). <span class="term">Vibhāva</span> is the causal-situational determinant, subdivided into ālambana-vibhāva (the object of the emotion) and uddīpana-vibhāva (the stimulating circumstance surrounding it). <span class="term">Anubhāva</span> is the visible physical consequent — gesture, expression, deliberately produced. <span class="term">Vyabhicāribhāva</span> comprises the thirty-three named transient states (nirveda, glāni, śaṅkā, among others) that pass through and color a scene without themselves becoming its dominant note.</p>
+      <div class="argbox">
+        <span class="label">Argumentative claim</span>
+        The sūtra's technical force lies in insisting that no single component is sufficient. Only their specific conjunction, operating on an already-present sthāyibhāva (permanent underlying disposition) in the spectator, converts a represented situation into an aesthetically relished one — the exact point on which Bhaṭṭa Lollaṭa, Śaṅkuka, Bhaṭṭa Nāyaka, and Abhinavagupta subsequently diverge in explaining how, and in whom, rasa actually arises.
+      </div>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">6.2</span> The Nine Rasas and the Śānta Controversy</h3>
+      <table class="datatable">
+        <tr><th>Rasa</th><th class="dev">Term</th><th>Sthāyibhāva</th></tr>
+        <tr><td>Erotic / romantic</td><td class="dev">शृङ्गार</td><td>rati</td></tr>
+        <tr><td>Comic</td><td class="dev">हास्य</td><td>hāsa</td></tr>
+        <tr><td>Compassionate / sorrowful</td><td class="dev">करुण</td><td>śoka</td></tr>
+        <tr><td>Furious</td><td class="dev">रौद्र</td><td>krodha</td></tr>
+        <tr><td>Heroic</td><td class="dev">वीर</td><td>utsāha</td></tr>
+        <tr><td>Fearful</td><td class="dev">भयानक</td><td>bhaya</td></tr>
+        <tr><td>Disgusted</td><td class="dev">बीभत्स</td><td>jugupsā</td></tr>
+        <tr><td>Wondrous</td><td class="dev">अद्भुत</td><td>vismaya</td></tr>
+        <tr><td>Peaceful <span class="mono" style="font-size:11px">(contested, see below)</span></td><td class="dev">शान्त</td><td>śama</td></tr>
+      </table>
+      <p class="dim">Bharata's own text is ambiguous as to whether śānta belongs within the original scheme; its inclusion is argued for by Udbhaṭa and, most influentially, by Abhinavagupta, on the grounds that spiritual repose underlies and makes possible the aesthetic completion of all eight other rasas. This paper flags the inclusion as a documented historical addition rather than treating the ninefold scheme as uniformly original to Bharata.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">6.3</span> The Eight Sāttvika Bhāvas as Involuntary Evidentiary Markers</h3>
+      <p>Distinct from anubhāva, which is deliberately produced, the eight sāttvika bhāvas — <span class="term">stambha</span> (paralysis), <span class="term">sveda</span> (perspiration), <span class="term">romāñca</span> (horripilation), <span class="term">svarabheda</span> (voice-break), <span class="term">vepathu</span> (trembling), <span class="term">vaivarṇya</span> (pallor), <span class="term">aśru</span> (tears), and <span class="term">pralaya</span> (a fainting-like dissolution of ordinary awareness) — are treated by the tradition as involuntary, and therefore as evidence that a performer's absorption is genuine rather than merely enacted. This evidentiary function is precisely why the doṣa (fault) taxonomy treats their absence, or their unconvincing production, as a distinct and nameable category of performance failure, separable from a simply mistimed or clumsy anubhāva.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">6.4</span> The Four Abhinaya Channels</h3>
+      <p><span class="term">Āṅgika</span> (bodily) abhinaya subdivides into aṅga (the six major limbs), pratyaṅga (secondary limbs), and upāṅga (minor limbs, chiefly facial and ocular, treated with disproportionately granular technical detail relative to their comparatively small muscle mass). <span class="term">Vācika</span> (verbal) abhinaya governs pitch, tempo, and register — including the Sanskrit/Prakrit assignment detailed at §7.1. <span class="term">Āhārya</span> (costume, makeup, ornament, stage property) is treated as a full technical subject, with specific colour convention (varṇa) assigned by character type and rasa. <span class="term">Sāttvika</span> abhinaya is the involuntary layer detailed at §6.3. The tradition's insistence on training all four jointly, rather than treating vācika as primary, is the practical enactment of the vāk-theory claim at §3.2: performance aims at paśyantī, and no single channel among the four is sufficient to carry a spectator there alone.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">6.5</span> Daśarūpaka — Genre as Rasa-Permission Architecture</h3>
+      <p>Dhanañjaya's Daśarūpaka, building on Bharata's own classification, names ten rūpaka (dramatic forms) differentiated by protagonist status, subject matter, and — critically — permitted tonal range: nāṭaka (major form, royal or divine protagonist), prakaraṇa (invented plot, ordinary protagonist), bhāṇa (monologue, typically a rogue narrating past adventures), vyāyoga (short, martial, minimal female presence, and structurally forbidden from foregrounding śṛṅgāra), samavakāra, ḍima, īhāmṛga (each governing specific rasa combinations), aṅka or utsṛṣṭikāṅka (single-act, frequently centred on grief), prahasana (farce), and vīthī (a minimal one- or two-character form). The classificatory principle is rasa-permission, not length or plot alone: selecting a dramatic form is already a rasa-level compositional decision, made before a single line of dialogue is composed.</p>
+    </div>
+  </div>
+
+  <!-- PART VII -->
+  <div class="part" id="p7">
+    <div class="partlabel">Part VII</div>
+    <h2>Historical Transmission and Material Evidence</h2>
+    <p class="partdek">Register on stage, epigraphy, canonical transmission, script evolution, oral pedagogy.</p>
+
+    <div class="subsec">
+      <h3><span class="num">7.1</span> Prakrit on Stage — the Full Sociolinguistic Register-Map</h3>
+      <p>Chapter 17's register-assignment rules (introduced at §1.3) constitute a complete sociolinguistic map, not an incidental stylistic convention. This paper reads the map as a full fifth characterizing channel operating alongside the four abhinaya channels of §6.4: register signalled social position, and frequently moral alignment, independent of and prior to plot confirmation, functioning within the drama exactly as costume colour convention (āhārya) did.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">7.2</span> Aśokan Epigraphy — Administrative Multilingualism as Independent Confirmation</h3>
+      <p>Aśoka's rock and pillar edicts (3rd century BCE) supply independent, non-literary confirmation of the vertical/horizontal transmission split argued for at §4.4. The edicts are not linguistically uniform: the Girnar (Gujarat), Kālsī (Uttarakhand), and Shāhbāzgaṛhī/Mānsehrā (northwest) versions carry substantially the same content in locally inflected Prakrit, with the northwestern versions rendered not in Brāhmī but in Kharoṣṭhī, a script of Aramaic-derived origin specific to the Gandhāra region. A single administrative message was thus deliberately rendered into whichever regional register and script would functionally reach a given local population, rather than issued once in a fixed classical form — public communication, in this period, meant meeting regional linguistic reality rather than asserting a single standard over it, several centuries prior to the Nāṭyaśāstra's own claim to occupy the same public register for aesthetic-emotional instruction.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">7.3</span> The Pali Canon as a Parallel Transmission-Control Case</h3>
+      <p>The Tipiṭaka's threefold structure — Vinaya Piṭaka (monastic discipline), Sutta Piṭaka (discourses), Abhidhamma Piṭaka (systematic doctrinal analysis) — was preserved orally for several centuries before written commitment (traditionally dated to the first century BCE, in Sri Lanka), relying on formulaic, repetition-based mnemonic architecture structurally comparable to Vedic pāṭha methods. Buddhaghosa's fifth-century commentarial work routinely glosses canonical Pali terms by tracing them to Sanskrit-cognate root senses — a direct, centuries-later application of the Nirukta method described at §2.6, demonstrating that derivational transparency remained a live interpretive tool well beyond the Sanskrit register in which it originated.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">7.4</span> Script Evolution — Brāhmī to Devanāgarī, Staged</h3>
+      <p>The path from Aśokan Brāhmī to standardized Devanāgarī proceeds through identifiable intermediate stages rather than a single transition. Gupta script (4th–6th century CE) is the first major stage, showing more rounded, cursive letterforms than the angular Aśokan Brāhmī. From Gupta script, two branches diverge: <span class="term">Siddhaṃ</span>, used extensively for Buddhist manuscript and mantra transmission and carried, via this specific route, into China and Japan, where it remains in specifically ritual use in Buddhist contexts today, long after its disuse in India itself; and <span class="term">Nāgarī</span>, which gradually standardizes into Devanāgarī by approximately the 7th–8th century. Devanāgarī preserves the abugida logic of its Brāhmī ancestor: the horizontal <span class="term">śirorekhā</span> (headline) binding a word into one visual unit, and conjunct ligatures (<span class="term">saṃyuktākṣara</span>) visually fusing consonant clusters exactly where sandhi (§2.5) fuses them phonetically.</p>
+      <p class="dim">Siddhaṃ's survival in East Asian ritual contexts, entirely decoupled from the spoken-register changes occurring in India across the same centuries, demonstrates that script and spoken register can dissociate completely — a script outliving every spoken form it was originally built to record.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">7.5</span> Guru-Śiṣya Paramparā as the Non-Manuscript Transmission Channel</h3>
+      <p>None of the preceding material survived by manuscript alone. The guru-śiṣya paramparā — sustained, daily, long-duration apprenticeship — carried practical knowledge a written text specifies only partially: precise recitation accent, karaṇa execution timing, rāga-specific ornamentation, none of which a static manuscript notation fully recovers. This is also the most plausible explanation for documented regional divergence among Nāṭyaśāstra manuscript recensions (the southern recension differing from northern recensions in chapter count and specific verse readings): a lineage-transmitted text accumulates local commentarial and performance-tradition influence in a way a purely manuscript-copied text, absent a living practice behind it, generally does not.</p>
+    </div>
+  </div>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- PART VIII -->
+  <div class="part" id="p8">
+    <div class="partlabel">Part VIII</div>
+    <h2>Synthesis: Dhvani as the Closing Argument</h2>
+    <p class="partdek">Where sphoṭa, rasa, and grammar converge on one claim.</p>
+
+    <div class="subsec">
+      <h3><span class="num">8.1</span> Abhidhā, Lakṣaṇā, Vyañjanā — the Three Operations of the Word</h3>
+      <p>Ānandavardhana's Dhvanyāloka names three distinct operations available to a word: <span class="term">abhidhā</span> (direct, literal denotation), <span class="term">lakṣaṇā</span> (secondary, metaphoric extension, invoked when the literal sense fails to fit its context), and <span class="term">vyañjanā</span> (suggestion — a further, evocative sense neither directly stated nor a straightforward metaphoric substitution, but implied). <span class="term">Dhvani</span> names poetry in which this third operation carries the primary aesthetic weight: what is suggested outweighs what is literally stated.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">8.2</span> Abhinavagupta's Rasa-Dhvani Synthesis</h3>
+      <p>Abhinavagupta's Locana commentary fuses this apparatus directly with the rasa-sūtra of §6.1: rasa itself, he argues, is the supreme form of dhvani — <span class="term">rasa-dhvani</span> — since rasa is never literally stated by a dramatic text (no play states outright that its audience now feels karuṇa) but is entirely suggested through the vibhāva–anubhāva–vyabhicāribhāva conjunction reaching a spectator whose sthāyibhāva is already prepared to receive it.</p>
+    </div>
+
+    <div class="subsec">
+      <h3><span class="num">8.3</span> Concluding Argument</h3>
+      <p>This paper's central claim, restated in its strongest form: sphoṭa (§3.3) holds that meaning is grasped whole, not built incrementally from a sequence of phonemes. Dhvani (§8.1) holds that the finest poetic meaning is suggested, not literally stated. Rasa (§6.1, §8.2) holds that the finest aesthetic experience is evoked in a prepared spectator, not directly depicted on stage. These are not three separate doctrines that happen to resemble one another; they are three domain-specific restatements — linguistic-philosophical, literary-critical, dramaturgical — of a single governing conviction this paper has traced from Śikṣā's phonetic matrix onward: that the surface of sound and word is a lawful, rule-governed compression of something more granular and more consequential beneath it, recoverable only by a reader or spectator trained to know the rule.</p>
+    </div>
+  </div>
+
+  <!-- BIBLIOGRAPHY -->
+  <div class="bib" id="bib">
+    <h2>Working Bibliography</h2>
+    <ol>
+      <li><span class="primary">Nāṭyaśāstra</span>, attributed to Bharata Muni — primary source for Parts III (gāndharva chapters), IV, VI, VII.1.</li>
+      <li><span class="primary">Aṣṭādhyāyī</span>, Pāṇini — primary source for Part II.2–2.4; commentarial tradition via Kātyāyana's Vārttikas and Patañjali's Mahābhāṣya.</li>
+      <li><span class="primary">Vākyapadīya</span>, Bhartṛhari — primary source for Part III.2–3.3.</li>
+      <li><span class="primary">Rāmāyaṇa</span> (Bāla Kāṇḍa), attributed to Vālmīki — primary source for Part V.1.</li>
+      <li><span class="primary">Dhvanyāloka</span>, Ānandavardhana, with the <span class="primary">Locana</span> commentary of Abhinavagupta — primary source for Part VIII.</li>
+      <li><span class="primary">Kāvyaprakāśa</span>, Mammaṭa — Part V.2.</li>
+      <li><span class="primary">Kāvyamīmāṃsā</span>, Rājaśekhara — Part V.3.</li>
+      <li><span class="primary">Daśarūpaka</span>, Dhanañjaya — Part VI.5.</li>
+      <li><span class="primary">Prākṛta-Prakāśa</span>, Vararuci — Part I.1, VII.1.</li>
+      <li><span class="primary">Saṅgīta Ratnākara</span>, Śārṅgadeva — Part III.5.</li>
+      <li>Aśokan rock and pillar edicts (Girnar, Kālsī, Shāhbāzgaṛhī, Mānsehrā recensions) — Part VII.2.</li>
+      <li>Pali Tipiṭaka (Vinaya, Sutta, Abhidhamma Piṭaka), with Buddhaghosa's commentarial corpus — Part VII.3.</li>
+      <li>Ferguson, C., "Diglossia" (1959) — cited comparatively at Part I.1 to distinguish the register-stack model from classical diglossia theory.</li>
+    </ol>
+  </div>
+
+  <footer class="endnote">
+    <span class="devq">नादब्रह्म</span>
+    <p>working draft — comments and citation corrections welcome</p>
+  </footer>
+</div>
 </body>
 </html>
 
