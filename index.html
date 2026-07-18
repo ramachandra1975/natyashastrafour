@@ -3,6 +3,1409 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nāda, Vāk, Śāstra — Part V: Śāstra and the Cognitive Sciences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Tiro+Devanagari+Hindi&family=JetBrains+Mono:wght@400;500&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f2e7; --ink:#221c15; --ink-soft:#544a3a; --rule:#d6cbb0;
+    --accent:#7a1f14; --accent2:#8f5a2a; --panel:#ece3cd; --sci:#2f5a52; --sci-bg:#e7eee9;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Source Serif 4',serif;font-size:18px;line-height:1.82;}
+  .dev{font-family:'Tiro Devanagari Hindi',serif;}
+  .page{max-width:800px;margin:0 auto;padding:0 28px 120px;}
+
+  .topbar{background:var(--ink);color:var(--bg);}
+  .topbar .inner{max-width:800px;margin:0 auto;padding:8px 28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;display:flex;justify-content:space-between;opacity:.85;}
+
+  .titleblock{padding:52px 0 26px;border-bottom:3px double var(--rule);}
+  h1.doctitle{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(30px,5vw,46px);line-height:1.14;margin:0 0 12px;}
+  .subtitle{font-size:17px;color:var(--ink-soft);font-style:italic;margin:0 0 4px;max-width:66ch;}
+
+  nav.toc{margin:30px 0 10px;padding:20px 24px;background:var(--panel);border:1px solid var(--rule);}
+  nav.toc .label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);display:block;margin-bottom:12px;}
+  nav.toc ol{margin:0;padding-left:20px;columns:2;column-gap:26px;font-size:14px;color:var(--ink-soft);}
+  nav.toc li{margin-bottom:5px;break-inside:avoid;}
+  nav.toc a{color:var(--ink-soft);text-decoration:none;border-bottom:1px dotted var(--rule);}
+  nav.toc a:hover{color:var(--accent);border-color:var(--accent);}
+  @media (max-width:600px){nav.toc ol{columns:1;}}
+
+  section.tabpanel{padding:56px 0 8px;border-bottom:1px solid var(--rule);}
+  section.tabpanel:last-of-type{border-bottom:none;}
+  section.tabpanel h2{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(25px,3.6vw,32px);margin:0 0 24px;color:var(--ink);}
+  section.tabpanel h2 .num{font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--accent2);display:block;margin-bottom:4px;letter-spacing:.08em;}
+  section.tabpanel p{margin:0 0 18px;text-align:justify;hyphens:auto;}
+  .term{font-style:italic;color:var(--accent);}
+  .devq{font-family:'Tiro Devanagari Hindi',serif;color:var(--ink);}
+
+  h3.subhead{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--sci);margin:30px 0 14px;padding-bottom:6px;border-bottom:2px solid var(--sci);}
+
+  blockquote.src{margin:22px 0;padding:18px 24px;background:var(--panel);border-left:3px solid var(--accent2);font-size:15.5px;}
+  blockquote.src .devq{display:block;font-size:20px;line-height:1.85;margin-bottom:8px;}
+  blockquote.src cite{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;}
+
+  .backtotop{display:inline-block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--sci);text-decoration:none;border-bottom:1px dotted var(--sci);}
+
+  .bib{padding:50px 0;border-top:2px solid var(--ink);margin-top:20px;}
+  .bib h2{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:26px;margin:0 0 18px;}
+  .bib ol{padding-left:20px;font-size:14.5px;color:var(--ink-soft);}
+  .bib li{margin-bottom:9px;}
+  .bib .primary{color:var(--ink);font-weight:600;}
+  footer.endnote{padding:40px 0 10px;text-align:center;color:var(--ink-soft);font-size:13px;}
+  footer.endnote .devq{display:block;font-size:20px;margin-bottom:8px;color:var(--accent);}
+  @media (max-width:600px){body{font-size:16.5px;} section.tabpanel p{text-align:left;hyphens:none;} .topbar .inner,.page{padding-left:16px;padding-right:16px;}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="inner"><span>NĀDA · VĀK · ŚĀSTRA — PART V</span><span>CONTINUOUS EDITION</span></div></div>
+
+<div class="page" id="top">
+
+  <div class="titleblock">
+    <h1 class="doctitle">Śikṣā, Vyākaraṇa, Nāṭya: The Grammar of Sound, Speech, and Feeling, Read Against the Sciences of Mind and Body</h1>
+    <p class="subtitle">Thirty subjects, phonetics through dhvani, each taken up in depth on its own terms and then carried into a sustained comparison with neuroscience, medicine, and the twelve branches of psychology that study the same underlying object: how a nervous system produces, times, stores, and feels structured sound and movement.</p>
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <span class="label">Contents</span>
+    <ol>
+      <li><a href="#t1">Derivational transparency</a></li>
+      <li><a href="#t2">The register-stack</a></li>
+      <li><a href="#t3">Śikṣā's three axes</a></li>
+      <li><a href="#t4">Māheśvara Sūtras</a></li>
+      <li><a href="#t5">Anuvṛtti</a></li>
+      <li><a href="#t6">Dhātu-pratyaya derivation</a></li>
+      <li><a href="#t7">Sandhi</a></li>
+      <li><a href="#t8">Samāsa</a></li>
+      <li><a href="#t9">Nirukta</a></li>
+      <li><a href="#t10">Chandas</a></li>
+      <li><a href="#t11">Chandas to karaṇa</a></li>
+      <li><a href="#t12">Nāda as substance</a></li>
+      <li><a href="#t13">Bhartṛhari's four levels</a></li>
+      <li><a href="#t14">Sphoṭa vs. sequence</a></li>
+      <li><a href="#t15">Śruti-svara</a></li>
+      <li><a href="#t16">Jāti-mūrcchanā to rāga</a></li>
+      <li><a href="#t17">Register-switching on stage</a></li>
+      <li><a href="#t18">Prakrit as parallel system</a></li>
+      <li><a href="#t19">Aśokan epigraphy</a></li>
+      <li><a href="#t20">Pali and oral transmission</a></li>
+      <li><a href="#t21">The rasa-sūtra's grammar</a></li>
+      <li><a href="#t22">Four abhinaya channels</a></li>
+      <li><a href="#t23">Devanāgarī and structure</a></li>
+      <li><a href="#t24">Script evolution</a></li>
+      <li><a href="#t25">Guru-śiṣya paramparā</a></li>
+      <li><a href="#t26">Kāvyotpatti: śoka to śloka</a></li>
+      <li><a href="#t27">Nāṭyotpatti: sarvavarṇika</a></li>
+      <li><a href="#t28">Abhidhā, lakṣaṇā, vyañjanā</a></li>
+      <li><a href="#t29">An integrated curriculum</a></li>
+      <li><a href="#t30">Synthesis</a></li>
+    </ol>
+  </nav>
+
+  <section class="tabpanel" id="t1">
+    <h2><span class="num">01</span>Derivational Transparency: Sanskrit's Structural Edge</h2>
+    <p>
+    Sanskrit vocabulary is, to an unusual degree, non-atomic. A word is rarely a fixed unit whose internal
+    structure has been worn smooth by centuries of use, the way "understand" no longer visibly means "stand
+    under" in English, or "breakfast" no longer registers as "break" plus "fast" for most speakers who use it.
+    <span class="devq">कवि</span> (kavi, poet), <span class="devq">काव्य</span> (kāvya, poem), and
+    <span class="devq">कविता</span> (kavitā, poetry) remain transparently one root, √kū ("to sound, to
+    praise, to describe"), under three distinct and rule-governed nominal derivations, recoverable in principle
+    by any reader trained in the grammar, without a dictionary treating each word as an arbitrary label. This
+    is not a scattered handful of memorable examples; it is systematic across the entire lexicon, governed by
+    the kṛt and taddhita suffix system detailed later. Technical vocabulary built on this system —
+    <span class="term">sādhāraṇīkaraṇa</span>, <span class="term">rasa-niṣpatti</span>,
+    <span class="term">vyabhicāribhāva</span> — is not borrowed jargon requiring a glossary; it decomposes the
+    moment its component roots are known, using the same root-inventory an ordinary literate speaker already
+    commands. English technical vocabulary, by contrast, routinely imports opaque Greek or Latin roots —
+    <em>psychology</em>, <em>aesthetics</em>, <em>etymology</em> itself — that a native English speaker cannot
+    decompose without separate classical training most speakers never receive. The practical consequence is a
+    much lower barrier between everyday vocabulary and technical vocabulary than most classical languages
+    permit, built directly into the grammar's own derivational machinery.
+    </p>
+    <h3 class="subhead">Correlate — Cognitive Psychology and Educational Psychology</h3>
+    <p>
+    Ziegler and Goswami's psycholinguistic grain-size theory (2005) compared reading acquisition across
+    languages with different levels of orthographic and morphological transparency, and found that children
+    learning transparent systems such as Finnish and Italian reach decoding fluency substantially faster than
+    children learning opaque systems such as English, because a transparent system lets a young reader assemble
+    an unfamiliar word from known sub-units rather than retrieve it whole from memory. This is not merely a
+    spelling effect: subsequent work extended the finding to morphological transparency specifically, showing
+    that languages whose derivational morphology is regular and visible on the surface of the word give
+    children an additional, independent route to word recognition beyond phonological decoding alone.
+    </p>
+    <p>
+    A second, converging line of evidence comes from adult psycholinguistics rather than child development.
+    Rastle, Marslen-Wilson, and colleagues ran masked-priming experiments showing that skilled adult readers of
+    English unconsciously decompose words like <em>darkness</em> into <em>dark</em> plus <em>-ness</em> within
+    milliseconds of exposure — and, more tellingly, that this decomposition happens even for word pairs that
+    are semantically opaque, where the derived form's meaning has drifted from its root (<em>corner</em> shows
+    no such priming from <em>corn</em>, because the two are not actually morphologically related, but genuinely
+    related opaque pairs like <em>department</em> and <em>depart</em> still show a measurable, if weaker,
+    priming effect). The conclusion drawn from this literature is that a morphological-decomposition route is a
+    standing, largely automatic feature of the reading brain, active whether or not a given language's grammar
+    happens to reward it. What Sanskrit's grammar does, on this reading, is not introduce a novel cognitive
+    operation but make an operation the brain already performs constantly and unconsciously into the
+    load-bearing, productive engine of the entire technical vocabulary — so that a reader's ordinary,
+    already-automatic decomposition habit does nearly all the work a separate glossary would otherwise have to
+    do.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t2">
+    <h2><span class="num">02</span>The Register-Stack: Sanskrit, Prakrit, Pali, Apabhraṃśa</h2>
+    <p>
+    Rather than remaining the sole vehicle of expression, Sanskrit sits atop a genealogically layered
+    register-stack — Sanskrit, Prakrit, Pali, Apabhraṃśa — in which each daughter register is a rule-derived
+    simplification of the one above it, not an independent language competing with it. Vararuci's
+    Prākṛta-Prakāśa does not describe Śaurasenī or Māgadhī Prakrit as autonomous systems; it derives their
+    forms rule by rule from a specified Sanskrit input, using the identical derivational method Pāṇini uses for
+    Sanskrit itself: consonant-cluster reduction, case-ending loss, systematic vowel shortening. A spectator in
+    Bharata's theatre unable to follow a king's Sanskrit-register vīra speech in full derivational detail could
+    still follow a Śaurasenī-speaking queen's śṛṅgāra dialogue, precisely because Prakrit's simplifications are
+    lawful and predictable reductions of the same underlying material rather than a foreign vocabulary
+    requiring separate study.
+    </p>
+    <h3 class="subhead">Correlate — Developmental Psychology and Social Psychology</h3>
+    <p>
+    Bilingual and diglossic development research offers a close functional parallel. Grosjean's complementarity
+    principle, developed from decades of work on bilingual language use, argues against the intuitive picture of
+    a bilingual speaker as two monolinguals sharing one head; instead, each language or register a bilingual
+    commands is typically acquired for, and restricted to, specific domains of life — home register, school
+    register, religious register — and a speaker's competence in each is calibrated to the demands of that
+    domain rather than uniformly "full." A register-stack of the kind Sanskrit sits atop is the same
+    architecture scaled up to an entire literary and administrative culture: Sanskrit for the domains that
+    demand its full derivational density, Śaurasenī or Māgadhī for domains where a simplified, more broadly
+    accessible register better serves the communicative goal, with no register treated as a deficient version
+    of another.
+    </p>
+    <p>
+    Giles' communication accommodation theory adds the social mechanism that makes register-shift meaningful
+    rather than arbitrary. Speakers systematically converge toward an interlocutor's speech style to signal
+    affiliation, or diverge from it to mark distinct social identity or maintain distance — a well-replicated
+    finding across dozens of language pairs and social settings. Bharata's own dramaturgical practice, examined
+    in later sections, exploits exactly this mechanism at the level of a written text: assigning a character a
+    specific register within the stack is itself a form of accommodation, signaling that character's social
+    position and relationship to the audience before a single line of content is delivered.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t3">
+    <h2><span class="num">03</span>Śikṣā's Three Axes: Sthāna, Mātrā, Svara</h2>
+    <p>
+    Śikṣā, the first Vedāṅga, specifies Sanskrit's sound-inventory along three genuinely independent axes that
+    a modern phonetic transcription typically compresses into one approximate symbol.
+    <span class="term">Sthāna</span> (place of articulation) orders consonants kaṇṭhya (guttural) through
+    oṣṭhya (labial), directly reflected in the traditional alphabet sequence
+    <span class="devq">क ख ग घ ङ</span>, moving systematically from throat to lips rather than by arbitrary
+    scribal convention. <span class="term">Mātrā</span> (duration) distinguishes hrasva, dīrgha, and pluta as a
+    three-way timing category, not the binary short/long distinction most modern phonetic sketches of Sanskrit
+    retain. <span class="term">Svara</span>, in its specific Vedic sense, denotes pitch-accent — udātta,
+    anudātta, svarita — preserved with a tolerance for error close to zero, since traditional doctrine held a
+    misplaced accent could invert a mantra's meaning entirely: the standard cited case is
+    <span class="term">indraśatru</span>, where accent placement alone decides whether the compound means "one
+    whose enemy is Indra" or "one whose enemy is Indra."
+    </p>
+    <h3 class="subhead">Correlate — Neuropsychology and Behavioral Psychology</h3>
+    <p>
+    Categorical perception research, beginning with Liberman and colleagues' original voice-onset-time studies
+    in the 1950s and extended across dozens of languages since, established that listeners do not perceive the
+    acoustic signal as a smooth continuum but sort continuous variation into discrete phonemic categories, with
+    sharp, near-instantaneous perceptual boundaries at specific timing and formant values. A sound falling just
+    inside a category boundary is heard as a clean instance of that category; a sound falling just outside is
+    heard as a clean instance of the neighboring category, even when the physical acoustic difference between
+    the two stimuli is smaller than the difference between two stimuli both heard as "the same" sound. Śikṣā's
+    three-axis system is, in effect, a pre-instrumental taxonomy of exactly the dimensions along which this
+    categorical sorting occurs — place, duration, and pitch are three of the primary acoustic-articulatory
+    dimensions modern phonetics still organizes consonant and vowel inventories around, arrived at through
+    disciplined introspective and pedagogical observation centuries before oscillographic measurement existed.
+    </p>
+    <p>
+    The pedagogical distinction this tab draws — a reciter trained diagnostically against an explicit three-axis
+    standard, able to state which axis a given error violated, versus a reciter trained only by imitation of a
+    live model — maps onto a well-established distinction in behavioral psychology between discrimination
+    training with explicit corrective feedback and pure observational or exposure-based learning. Shaping
+    procedures in operant conditioning research depend on the learner receiving specific, immediate feedback
+    tied to an identifiable dimension of their behavior, which is what allows a shaped learner to generalize
+    and self-correct in the trainer's absence; exposure-based imitation alone, without that dimension-specific
+    feedback, tends to produce a learner who performs correctly only while a corrective model remains present.
+    Śikṣā's explicit three-axis taxonomy is precisely the kind of dimension-specific diagnostic framework that
+    converts a Vedic reciter's training from the second condition into the first.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t4">
+    <h2><span class="num">04</span>The Māheśvara Sūtras: Compression Engineering</h2>
+    <p>
+    Before a single grammatical rule is stated, the fourteen Māheśvara Sūtras reorganize the phoneme inventory
+    into a structure purpose-built for rule-writing economy:
+    </p>
+    <blockquote class="src">
+      <span class="devq">अ इ उ ण् । ऋ ऌ क् । ए ओ ङ् । ऐ औ च् । ह य व र ट् ।</span>
+      <cite>Opening lines of the Māheśvara Sūtras (Akṣarasamāmnāya)</cite>
+    </blockquote>
+    <p>
+    Each line terminates in a silent marker consonant (<span class="term">it</span>), never pronounced in any
+    actual word, whose sole function is to close that line's phoneme-set for reference purposes. This structure
+    enables <span class="term">pratyāhāra</span> — naming any contiguous span of lines with a two-syllable code
+    formed from a start-phoneme and a closing it-marker: <span class="devq">अच्</span> (ac) denotes the entire
+    vowel inventory; <span class="devq">हल्</span> (hal) denotes the entire consonant inventory. Without this
+    compression, the Aṣṭādhyāyī's roughly 3,959 sūtras would each need to spell out their applicable
+    phoneme-sets in full, multiplying the grammar's length by an order of magnitude and putting it well beyond
+    what oral memorization traditionally sustained.
+    </p>
+    <h3 class="subhead">Correlate — Cognitive Psychology of Working Memory</h3>
+    <p>
+    Miller's 1956 paper on the "magical number seven, plus or minus two," and the substantial body of work it
+    launched, established that working memory is limited not by a fixed number of raw items but by a fixed
+    number of chunks — and that the size of a chunk is itself flexible, expanding to absorb more raw
+    information as a learner's familiarity with a domain's internal structure deepens. A pratyāhāra is a chunk
+    in exactly this technical sense: a single retrievable code standing in for an entire phoneme class, so that
+    a grammatical rule referencing "hal" is operating over one working-memory slot rather than over the dozens
+    of individual consonants that slot expands into. Chase and Simon's classic chess-memory studies supply the
+    clearest independent demonstration of the same mechanism: expert players do not have larger raw memory
+    spans than novices, but they encode a board position as a handful of familiar tactical configurations
+    rather than as sixty-four independently tracked squares, allowing near-perfect recall of positions drawn
+    from real games while showing no advantage over novices on randomly scrambled positions that cannot be
+    chunked meaningfully.
+    </p>
+    <p>
+    This last detail is the important one for understanding why the Māheśvara Sūtras were traditionally taught
+    as a freestanding memorized unit, chanted before any grammatical instruction proper began. Chunking only
+    provides its efficiency benefit to a learner who has already internalized the chunk-to-content mapping; a
+    novice shown a chess position drawn from expert-level chunks gets no memory benefit from those chunks at
+    all, because the chunks are not chunks for someone who hasn't learned to see them as units. A pratyāhāra
+    like <span class="devq">अच्</span> functions exactly the same way: it is genuine compression for a reader
+    who has separately memorized the fourteen-line table it indexes into, and simply unreadable shorthand for
+    anyone who has not, which is why the traditional curriculum enforced memorization of the table as an
+    unconditional precondition rather than an optional aid.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t5">
+    <h2><span class="num">05</span>Anuvṛtti: The Silent Carry-Forward</h2>
+    <p>
+    Pāṇini's rule typology — <span class="term">saṃjñā</span> (definitional), <span class="term">paribhāṣā</span>
+    (interpretive meta-rule), <span class="term">vidhi</span> (operative), <span class="term">niyama</span>
+    (restrictive), <span class="term">atideśa</span> (extension), <span class="term">adhikāra</span> (governing
+    heading) — is load-bearing because of the mechanism that makes these categories interact:
+    <span class="term">anuvṛtti</span>, the silent carrying-forward of a word or condition stated in one sūtra
+    into an unspecified number of following sūtras, until a later rule explicitly cancels or modifies it. A
+    sūtra read in isolation, without reconstructing everything it silently inherits from earlier in its
+    section, is frequently unparseable or actively misleading — it may appear to state a rule with no domain of
+    application specified, when the domain was in fact fixed several sūtras earlier and never restated.
+    Patañjali's Mahābhāṣya and Kātyāyana's Vārttikas exist substantially to adjudicate contested cases of
+    exactly this scope-tracking problem, which is itself evidence of how demanding the mechanism was even for
+    classically trained readers operating within a living commentarial tradition.
+    </p>
+    <h3 class="subhead">Correlate — Psycholinguistics and Neuropsychology of Syntax</h3>
+    <p>
+    Anuvṛtti is structurally a long-distance dependency problem of exactly the kind studied under garden-path
+    and center-embedded sentence processing. Gibson's dependency locality theory models comprehension
+    difficulty as a direct function of the distance a reader must hold an earlier element active in memory
+    before a later element resolves or completes it — the longer and more intervening material lies between
+    the two, the higher the integration cost when resolution finally occurs. This gives a precise, testable
+    account of exactly the difficulty anuvṛtti creates: a condition stated in one sūtra and silently required
+    several sūtras later imposes a dependency-locality cost that grows with the length of the intervening
+    span, which is one reason the tradition needed a dedicated commentarial apparatus rather than leaving
+    scope-tracking to unaided memory.
+    </p>
+    <p>
+    Neuroimaging work on hierarchical syntactic processing supplies a second, more physiological layer to the
+    same point. Studies of Broca's area and neighboring left inferior frontal cortex — associated researchers
+    include Grodzinsky's work on agrammatic aphasia and Friederici's work on the neural timeline of sentence
+    processing — consistently implicate this region specifically in non-adjacent, hierarchical dependency
+    resolution, as distinct from simple linear sequence processing, which appears to draw more heavily on more
+    posterior temporal regions. Patients with damage localized to this region show selective difficulty with
+    exactly the class of long-distance, structure-dependent relations anuvṛtti requires, while remaining able to
+    process simple adjacent word-to-word relations relatively intact — direct clinical evidence that tracking a
+    rule's silently carried-forward scope across several sūtras draws on a specific, identifiable, and
+    dissociable neural resource, not a generic and undifferentiated "attention" or "memory."
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t6">
+    <h2><span class="num">06</span>Dhātu-Pratyaya Derivation: Root and Suffix</h2>
+    <p>
+    The Dhātupāṭha enumerates roughly two thousand verbal roots across ten conjugational classes
+    (<span class="term">gaṇa</span>). Nominal derivation proceeds from these roots via two suffix classes:
+    <span class="term">kṛt</span> suffixes, forming nouns and adjectives directly from a verbal root
+    (<span class="devq">कर्तृ</span>, kartṛ, "doer," from √kṛ plus the agentive suffix -tṛc), and
+    <span class="term">taddhita</span> suffixes, forming secondary derivatives from an already-formed nominal
+    base. This is the specific machinery underlying the kavi/kāvya/kavitā transparency introduced earlier — not
+    a poetic accident but a systematic, exhaustively catalogued suffixation grammar covering the entire
+    lexicon. A poet composing within a living derivational culture hears a new compound's root the instant it
+    is coined, the way a modern English speaker instantly parses a novel compound like "moonwalk" without
+    needing it defined; Kālidāsa coining a fresh bahuvrīhi compound for a specific verse is exercising a
+    productive rule his audience shares, not inventing unfamiliar vocabulary.
+    </p>
+    <h3 class="subhead">Correlate — Developmental Psychology of Reading</h3>
+    <p>
+    Morphological awareness — a child's explicit, testable ability to identify and manipulate root-and-suffix
+    structure, independent of raw vocabulary size — is one of the more robust predictors of later reading
+    comprehension across the longitudinal literacy literature. Carlisle's foundational work, and Deacon and
+    Kirby's subsequent longitudinal studies tracking children across multiple school years, show morphological
+    awareness measured as early as first or second grade predicts reading comprehension outcomes several years
+    later even after controlling for phonological awareness and vocabulary size separately — meaning the
+    capacity to decompose a novel word into a familiar root plus a familiar suffix is doing independent
+    explanatory work, not merely tracking general verbal ability. The mechanism proposed is exactly the one at
+    issue in Kālidāsa's coining: a morphologically aware reader encountering an unfamiliar derived word for the
+    first time can generate a working hypothesis about its meaning compositionally, from known parts, rather
+    than needing that exact form to have been previously encountered and stored whole.
+    </p>
+    <p>
+    Sanskrit's dhātu-pratyaya system effectively makes this specific skill mandatory rather than optional for
+    literary competence, since the entire technical and poetic vocabulary is generated productively from a
+    closed root inventory rather than accumulated as a long list of separately memorized forms. This has a
+    direct pedagogical implication independent of the historical material: a curriculum that teaches vocabulary
+    as a list of forms to memorize, without explicit training in the suffixation rules generating those forms,
+    is training a weaker and less generalizable skill than a curriculum that teaches the generative rule
+    directly — the same distinction the developmental literature draws between children who can only recognize
+    previously encountered derived words and children who can correctly infer the meaning of a derived word
+    they are encountering for the first time.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t7">
+    <h2><span class="num">07</span>Sandhi as Meaning-Bearing Structure</h2>
+    <p>
+    <span class="term">Sandhi</span> governs sound change at morpheme and word boundaries across three
+    registers: svara sandhi (vowel-vowel, governed by the guṇa/vṛddhi vowel-gradation series), vyañjana sandhi
+    (consonant-consonant, governing voicing and place assimilation), and visarga sandhi (governing the aspirate
+    ḥ before a following sound). Sandhi is not optional pronunciation smoothing but obligatory, load-bearing
+    derivation: a compound resolved incorrectly is not casually mispronounced, it is misparsed into a different
+    sequence of underlying words, frequently producing an ill-formed or simply wrong reading. Classical
+    Sanskrit poetry is conventionally printed without word-division marks precisely because a trained reader is
+    expected to perform sandhi-resolution as part of ordinary reading — a reader without secure command of the
+    three sandhi registers cannot reliably recover where one word ends and the next begins in an unmarked
+    classical text, independent of vocabulary knowledge.
+    </p>
+    <h3 class="subhead">Correlate — Cognitive Psychology of Statistical Learning</h3>
+    <p>
+    Saffran, Aslin, and Newport's 1996 speech-segmentation study is one of the more widely replicated findings
+    in developmental psycholinguistics. Eight-month-old infants, exposed to only two minutes of a continuous,
+    unbroken artificial speech stream with no pauses, silences, or other cues marking word boundaries, reliably
+    extracted the underlying "words" from the stream using nothing but the statistical regularity that
+    syllables within a word co-occur more predictably than syllables straddling a word boundary — a purely
+    distributional, non-semantic cue. This finding, replicated many times since across natural and artificial
+    languages, established that segmenting continuous, fused sound into discrete lexical units is a core,
+    early-developing statistical-learning capacity built into the ordinary auditory system, not a specialized
+    literary skill that has to be taught from scratch.
+    </p>
+    <p>
+    Sandhi-reading is, in a precise sense, the adult, explicit, rule-based version of the same underlying
+    operation an infant performs unconsciously and statistically on raw continuous speech. Where an infant
+    exploits transitional probabilities between syllables, a Sanskrit reader trained in the three sandhi
+    registers exploits explicit phonological rules to recover the same kind of boundary information from an
+    unmarked text — both are boundary-recovery operations performed on a signal that does not itself mark its
+    own word boundaries. This reframes the removal of word-division marks from classical manuscripts not as an
+    obstacle imposed on the reader but as a closer match to the condition under which spoken language is
+    actually processed by the auditory system in the first place, where no speaker's continuous stream of
+    speech carries audible gaps between words either.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t8">
+    <h2><span class="num">08</span>Samāsa: Compression Literacy and the Twelve-Member Compound</h2>
+    <p>
+    <span class="term">Samāsa</span> (compounding) supplies classical kāvya's characteristic syllable-density:
+    tatpuruṣa (determinative), karmadhāraya (descriptive), dvigu (numeral), bahuvrīhi (exocentric —
+    "lotus-eyed" describing an external possessor, not the eyes themselves), dvandva (copulative), and
+    avyayībhāva (adverbial). A bahuvrīhi compound of a dozen members, not uncommon in classical poetry,
+    performs the syntactic work of a full relative clause while metrically occupying the space of a single
+    declinable word — the largest single technology available to a poet writing under Chandas's fixed
+    syllable-count constraint. Reading such a compound requires a distinct decompositional skill from ordinary
+    vocabulary recognition: identifying where each internal member-boundary falls, which compound-type governs
+    the whole, and, for bahuvrīhi specifically, correctly identifying that the compound's stated content is not
+    itself the referent but a description of some external possessor.
+    </p>
+    <h3 class="subhead">Correlate — Cognitive Load Theory and Expertise Research</h3>
+    <p>
+    Sweller's cognitive load theory distinguishes intrinsic load, the complexity inherent to the material being
+    processed, from extraneous load, complexity added by how that material happens to be presented, and
+    germane load, the effortful work of building durable mental schemas from the material. A central finding of
+    this research program is that chunking related sub-elements into a single schema reduces the effective
+    working-memory demand of a task even when the underlying information content is completely unchanged — the
+    same total information, packaged as one unit rather than several, occupies less working-memory capacity to
+    hold and manipulate. A long samāsa is exactly this kind of schema-level compression applied at the sentence
+    level: it does not reduce the semantic content a relative clause would carry, but it reduces the number of
+    separately tracked syntactic units a listener's working memory must hold active simultaneously.
+    </p>
+    <p>
+    This compression is not free, however, and the cost is instructive. Cognitive load theory also predicts,
+    and expertise research on chunking generally confirms (again via Chase and Simon's chess studies, and later
+    replicated in domains from radiology to programming), that a compressed representation only reduces
+    processing load for someone who already possesses the decompositional skill needed to unpack it; for a
+    novice lacking that skill, the same compressed representation is not lower-load but higher-load, since it
+    now presents as a single undifferentiated block that must be laboriously decomposed before it can be
+    understood at all. This is exactly the asymmetry a long Sanskrit compound presents: genuine metrical and
+    cognitive economy for a reader trained in samāsa parsing, and a nearly opaque wall of syllables for a reader
+    who has vocabulary knowledge alone without the specific structural training samāsa parsing requires.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t9">
+    <h2><span class="num">09</span>Nirukta: Etymology as Hermeneutic Method</h2>
+    <p>
+    Yāska's Nirukta advances a claim stronger than that Sanskrit words possess traceable origins: it holds that
+    a word's meaning is not fully recoverable independent of its derivation, and organizes obscure Vedic
+    vocabulary into semantic classes precisely so an unfamiliar term can be resolved by tracing it to a known
+    root-sense, rather than accepted as an arbitrary label requiring external definition. This is a genuinely
+    different reading posture from consulting a bilingual dictionary: a dictionary supplies a target-language
+    gloss as a fixed equivalence, while Nirukta's method supplies a derivational path that, once followed, makes
+    the word's specific sense feel motivated rather than arbitrary — a term meaning what it means because of
+    what it is built from, not merely by convention. Nirukta is also where the tradition first formalizes a
+    distinction later Alaṃkāraśāstra develops fully: between a name assigned for an incidental historical reason
+    and a name that transparently states its referent's essential nature.
+    </p>
+    <h3 class="subhead">Correlate — Cognitive Psychology of Semantic Memory</h3>
+    <p>
+    Spreading-activation models of the mental lexicon, formalized by Collins and Loftus and refined
+    considerably since, represent word meaning not as a set of isolated dictionary-style entries but as a
+    network of interconnected nodes, where activating one word automatically and measurably activates
+    semantically or morphologically related nodes nearby, a phenomenon directly observable in priming
+    experiments: reading or hearing <em>cook</em> reliably speeds subsequent recognition of <em>cooking</em>,
+    <em>cooked</em>, and even semantically drifted relatives, compared to an unrelated control word, even though
+    a conventional dictionary would list these as separate headwords with separate definitions. Nirukta's claim
+    that a word's derivation is part of its meaning, not merely background information about its history, is a
+    pre-theoretical statement of the same underlying architecture modern semantic-network models formalize:
+    meaning is not stored atomistically per word but distributed across a connected structure that a word's
+    derivational relatives are part of.
+    </p>
+    <p>
+    This has a direct practical implication for how the two reading postures actually differ in outcome, not
+    only in theory. A reader whose access to Nirukta-trained root-sense connections is intact retrieves a word's
+    meaning together with its connections to a cluster of derivationally related words, activating the shared
+    network the way priming studies show happens automatically in fluent processing; a reader working from a
+    dictionary-only gloss retrieves the target meaning in isolation, without that automatic activation of
+    related forms, because the dictionary entry was never built to encode the relation in the first place. The
+    comprehension outcome for the single word looked up can be identical in both cases; what differs is whether
+    the reader's mental representation of that word is embedded in the wider derivational network the word
+    actually belongs to, or floating as an isolated, disconnected fact.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t10">
+    <h2><span class="num">10</span>Chandas: The Mathematics and Feeling of Meter</h2>
+    <p>
+    Vedic meter is counted purely by syllable — gāyatrī (24 syllables), anuṣṭubh (32, the epic śloka's base
+    form), triṣṭubh (44), jagatī (48). Piṅgala's Chandaḥśāstra, governing classical kāvya meter, adds a second
+    constraint layer: a fixed sequence of laghu (light) and guru (heavy) syllable-weights within the line,
+    generating named vṛttas — vasantatilakā, mandākrāntā, śārdūlavikrīḍita — each carrying, by long convention,
+    an associated emotional register, most famously mandākrāntā's association with viraha (separation-longing),
+    employed throughout Kālidāsa's Meghadūta specifically because its particular laghu-guru cadence was already
+    understood, independent of the poem's actual content, to carry a slow, yearning quality. Piṅgala's method
+    for enumerating every possible laghu-guru pattern of a given length — building longer patterns from shorter
+    ones through a systematic doubling-and-rule procedure — has been identified by historians of mathematics as
+    containing, in embryonic form, both binary enumeration and a numerical sequence equivalent in structure to
+    what is now called the Fibonacci sequence, arrived at for a purely prosodic purpose several centuries before
+    either was studied in that form elsewhere.
+    </p>
+    <h3 class="subhead">Correlate — Neuroscience of Rhythm and Evolutionary Psychology</h3>
+    <p>
+    Large and Jones' dynamic attending theory, and the substantial body of neural-entrainment research it
+    launched, describes rhythm perception not as passive registration of a timing pattern but as active
+    oscillatory brain activity that phase-locks to a periodic stimulus and generates a specific, measurable
+    expectation for where the next beat will fall. This entrainment is not emotionally neutral: because a
+    listener's neural oscillators are actively predicting the next onset, a rhythm that arrives slower or
+    faster than a baseline expectation, or that groups weight in a specific recurring pattern, produces a
+    correspondingly specific felt quality of anticipation, urgency, or release, rather than a neutral timing
+    grid the listener assigns feeling to afterward. This gives a mechanistic account of why a specific
+    laghu-guru cadence could reliably carry a specific emotional association across an entire literary culture
+    rather than requiring each individual reader to learn the association as an arbitrary convention:
+    mandākrāntā's characteristically drawn-out cadence produces a measurably different entrainment pattern than
+    a quicker vṛtta, and that difference is available to any nervous system capable of rhythmic entrainment at
+    all, independent of whether the listener has ever been told mandākrāntā "means" longing.
+    </p>
+    <p>
+    Aniruddh Patel's comparative and evolutionary work on rhythmic entrainment extends this into a broader
+    account of why rhythm carries social and emotional weight so consistently across human cultures. Patel's
+    vocal-learning hypothesis, tested through comparative studies of entrainment ability across species, finds
+    that reliable beat-synchronization to an external rhythm is reliably present only in species also capable
+    of vocal learning — a finding that ties rhythmic entrainment to the same neural substrate underlying
+    complex vocal communication generally, rather than treating rhythm perception as an unrelated, freestanding
+    capacity. Read against this backdrop, Piṅgala's systematic cataloguing of laghu-guru patterns and their
+    conventional emotional associations looks less like an isolated literary convention and more like a
+    centuries-old, empirically accumulated catalogue of a real and measurable psychoacoustic relationship
+    between specific rhythmic structures and specific felt states.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t11">
+    <h2><span class="num">11</span>From Chandas to Karaṇa: Metrical Science Becomes Kinetic Science</h2>
+    <p>
+    The transfer this section names is structurally direct even though it is rarely stated explicitly: Chandas
+    organizes speech into fixed-length units (metrical feet) built from a small alphabet of weighted primitives
+    (laghu, guru), combined under specific rule into a closed set of named patterns (vṛttas), each carrying
+    conventional expressive association. The Nāṭyaśāstra's karaṇa system organizes movement into
+    fixed-composition units (karaṇas) built from a small set of weighted primitives (sthāna, cārī, nṛtta-hasta),
+    combined under specific rule into named sequences (aṅgahāras), each carrying conventional dramatic
+    association. Both systems specify a closed primitive inventory, a combination rule, and a named output set,
+    and both treat the resulting named units as carrying stable, teachable, non-arbitrary expressive
+    association rather than leaving that association to individual performer intuition — the same
+    combinatorial-design method applied a second time, by the same broader intellectual culture, to the body.
+    </p>
+    <h3 class="subhead">Correlate — Motor-Learning Neuroscience and Comparative Psychology</h3>
+    <p>
+    Motor-sequence learning research locates skilled, chunked movement sequences in cortico-basal ganglia and
+    cerebellar circuits distinct from those handling single, unpracticed movements. Doyon's model of motor
+    sequence consolidation, drawn from a substantial body of behavioral and neuroimaging work, describes a
+    consistent pattern: with sustained practice, a string of individually effortful, separately controlled
+    movements is progressively re-encoded as one fluently executed unit, with measurable changes in which brain
+    regions carry the primary control burden as the skill consolidates from an effortful, cortically-controlled
+    stage to an automatic, subcortically-controlled stage. This is structurally the same consolidation process
+    described for phoneme compression in the Māheśvara Sūtras discussion above, now demonstrated at the level of
+    the motor system rather than the memory system: a karaṇa is this consolidation process formalized as a
+    named, teachable curricular unit, specifying in advance which movements should be practiced together as one
+    chunk rather than leaving the chunking to emerge idiosyncratically, and at different points for different
+    dancers, through unstructured practice alone.
+    </p>
+    <p>
+    Comparative work on rhythmic entrainment across species, again drawing on Patel's vocal-learning hypothesis,
+    supplies the specific reason sound-timing and movement-timing are coupled this tightly in the first place
+    rather than being two separate skills that happen to be trained together by cultural convention. Only
+    vocal-learning species — a comparatively small set that notably includes humans, some birds, and a handful
+    of other mammals, but excludes most primates closely related to humans — reliably entrain movement to an
+    external auditory beat at all; species without vocal-learning capacity generally fail to synchronize
+    movement to rhythm even with extensive training. This situates the Chandas-to-karaṇa link not as an
+    incidental pairing of two independently developed arts but as one expression of a capacity — coupling
+    sound-timing to motor-timing — that appears to be biologically restricted to species capable of vocal
+    learning in the first place, which is also, not coincidentally, the same capacity underlying complex spoken
+    language.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t12">
+    <h2><span class="num">12</span>Nāda as Graded Substance: Anāhata and Āhata</h2>
+    <p>
+    The gāndharva chapters of the Nāṭyaśāstra, read alongside the later Saṅgīta Ratnākara, treat
+    sound-vibration (<span class="term">nāda</span>) not as a communicative signal but as a graded physical
+    substance, split into <span class="term">anāhata nāda</span> (unstruck, unmanifest, the subtlest possible
+    vibration) and <span class="term">āhata nāda</span> (struck, audible, produced by contact — breath against
+    the vocal apparatus, a stick against a drum-head). This is a direct extension of Śikṣā's own treatment of
+    sound as a physical event with a specific mechanism and location in the vocal tract: the gāndharva material
+    extends that treatment outward from individual phoneme production to a general cosmological gradient
+    running from subtlest vibration to fully manifest speech and music alike, a framing later Bhartṛhari
+    material and Kashmir Śaiva spanda doctrine build directly on.
+    </p>
+    <h3 class="subhead">Correlate — Neuroscience of Auditory Processing</h3>
+    <p>
+    Modern auditory neuroscience independently describes a graded processing hierarchy that begins well before
+    conscious perception, running from mechanical cochlear vibration through several subcortical relay nuclei
+    to cortical representation. A substantial amount of genuine neural activity occurs at every stage of this
+    hierarchy without ever reaching conscious awareness: efferent feedback from the brainstem actively tunes
+    cochlear sensitivity in real time before a signal is even fully transduced; subcortical structures such as
+    the inferior colliculus perform pitch-tracking computations on the incoming signal well before it reaches
+    auditory cortex; and pre-attentive cortical responses, measurable as the mismatch-negativity component in
+    electroencephalography, register acoustic changes a listener never consciously notices or reports hearing
+    at all.
+    </p>
+    <p>
+    The anāhata/āhata distinction is best read as a phenomenological rather than anatomical anticipation of
+    this same basic finding, and the distinction between the two framings matters for how the correlate should
+    be understood. Both frameworks converge on the specific claim that audible, consciously perceived sound is
+    the visible terminus of a much larger continuum of vibration and processing that precedes and exceeds
+    conscious hearing — a claim modern auditory neuroscience arrives at through instrumented measurement of
+    subcortical and pre-attentive activity, and the gāndharva material arrives at through sustained
+    introspective and pedagogical attention to the felt difference between struck and unstruck sound. The
+    mechanisms proposed for the "unstruck" portion are not the same kind of claim in the two frameworks — one is
+    a physiological account of measurable subcortical activity, the other a metaphysical account of a
+    subtler-than-physical vibration — but the structural insight that manifest, audible sound is only the
+    visible fraction of a larger process is shared by both.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t13">
+    <h2><span class="num">13</span>Bhartṛhari's Four Levels of Vāk</h2>
+    <p>
+    Bhartṛhari's Vākyapadīya develops speech through four levels: <span class="term">parā</span>
+    (undifferentiated, prior to any division into word or meaning), <span class="term">paśyantī</span>
+    ("seeing" speech — an idea grasped as one undivided flash, prior to sequential articulation),
+    <span class="term">madhyamā</span> (intermediate, mentally sequenced but not yet uttered), and
+    <span class="term">vaikharī</span> (fully articulated, audible speech). Formal grammatical training —
+    Śikṣā, the Aṣṭādhyāyī, sandhi, samāsa — addresses vaikharī almost exclusively: the fully articulated
+    output, its correct production, and its correct parsing. Nāṭya's own abhinaya training is constructed
+    differently and deliberately so: āṅgika, vācika, āhārya, and sāttvika abhinaya, trained jointly rather than
+    with vācika treated as primary, is the practical enactment of a claim that performance aims at paśyantī —
+    the pre-verbal unified flash of rasa — using vaikharī only as an entry point, not as the destination.
+    </p>
+    <h3 class="subhead">Correlate — Cognitive Psychology of Speech Production and Developmental Psycholinguistics</h3>
+    <p>
+    Levelt's influential model of speech production, developed across the 1980s and still a reference point in
+    the field, proposes an analogous staged architecture: conceptualization, in which a speaker forms a
+    pre-verbal message; formulation, in which that message receives grammatical and phonological encoding; and
+    articulation, in which the encoded form is executed motorically as actual sound. The model was built
+    substantially from speech-error evidence, because different stages of the model predict different kinds of
+    errors: conceptual errors (saying the wrong idea entirely), lexical-selection errors (retrieving a related
+    but wrong word, as in saying "left" for "right"), and phonological encoding errors (transposing sounds
+    within an otherwise correctly selected word, as in a spoonerism) are each associated with disruption at a
+    specific, distinct stage, and the fact that these error types are dissociable from one another is taken as
+    evidence that the stages themselves are functionally separate processing steps rather than one undivided
+    event.
+    </p>
+    <p>
+    Vygotsky's account of inner speech, developed independently and from a very different theoretical tradition,
+    supplies a second and more developmentally grounded argument for something resembling Bhartṛhari's
+    madhyamā. Vygotsky traced a specific developmental trajectory from audible private speech in young children,
+    through partially vocalized "whispered" speech, to fully internalized inner speech in older children and
+    adults — and argued, based on this trajectory, that inner speech is not simply silent vaikharī but a
+    genuinely distinct, compressed, predicative medium with its own structure, abbreviated and elliptical in
+    ways fully externalized speech is not. This gives an independent developmental and behavioral argument for a
+    real intermediate stage of thought that is already language-structured but not yet fully externalized —
+    precisely the functional role madhyamā occupies in Bhartṛhari's schema. Bhartṛhari's four-level model,
+    Levelt's staged production model, and Vygotsky's developmental account of inner speech were each developed
+    independently, in different centuries and for different purposes, and yet converge on the same basic claim:
+    that "speech" is not a single event but the terminal, most externally visible stage of a multi-stage
+    process, and a theory of language addressing only that terminal stage has addressed only part of what the
+    system actually does.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t14">
+    <h2><span class="num">14</span>Sphoṭa Versus Sequential Processing</h2>
+    <p>
+    Bhartṛhari's sphoṭa doctrine resolves a specific problem the phoneme-sequence model leaves open: if a word
+    is perceived as a temporal sequence of discrete sounds, at what point does meaning occur, given that no
+    single sound in the sequence carries it independently? His answer is that the audible sequence
+    (<span class="term">dhvani</span>, in this specific grammatical sense — sound as vehicle) is separate from
+    the actual meaning-bearing unit, the <span class="term">sphoṭa</span>, grasped by the mind as a single
+    non-sequential flash once the sequence completes, rather than assembled incrementally. This claim was
+    directly and substantially contested within the same broader intellectual culture: Kumārila Bhaṭṭa and
+    Prabhākara, from differing positions within the Mīmāṃsā school, held that sentence-meaning is
+    compositionally assembled from the meanings of its individually meaningful constituent words, not grasped
+    as an antecedent whole — one of classical India's most sustained and technically developed disputes in the
+    philosophy of language.
+    </p>
+    <h3 class="subhead">Correlate — Psycholinguistics of Lexical Access</h3>
+    <p>
+    This is structurally close to a fault line running through modern debates about how words are recognized in
+    reading and listening. The word superiority effect, established through Reicher's original tachistoscopic
+    experiments and elaborated in McClelland and Rumelhart's interactive activation model, shows that letters
+    are identified faster and more accurately when they appear as part of a familiar whole word than when the
+    same letters appear in isolation or in a non-word string — evidence that a familiar word is recognized
+    holistically, as a single retrieved unit, faster than its component parts would be recognized on their own.
+    Dual-route and compositional models of reading, most fully developed in Coltheart's dual-route cascaded
+    (DRC) model, insist a separate grapheme-to-phoneme assembly route remains available and, for novel or
+    unfamiliar strings, necessary — a word with no prior stored whole-word representation simply cannot be
+    recognized holistically, since there is no holistic representation yet to retrieve.
+    </p>
+    <p>
+    Contemporary psycholinguistics has largely resolved this specific dispute not by choosing one side outright
+    but by positing dual routes operating in parallel and weighted by word familiarity: a highly familiar word
+    is recognized primarily through the fast, holistic route, while an unfamiliar or novel word depends more
+    heavily on the slower, compositional assembly route, with both routes contributing in varying proportion
+    for words of intermediate familiarity. Read against this resolution, the classical sphoṭa/Mīmāṃsā dispute
+    looks less like two mutually exclusive metaphysical positions and more like each side over-generalizing from
+    a real but partial processing fact — sphoṭa's holistic claim describes something genuinely true of highly
+    familiar, over-learned sentence forms, while Mīmāṃsā's compositional insistence describes something
+    genuinely true of novel or unfamiliar constructions — which suggests the classical dispute was tracking a
+    real underlying processing distinction centuries before the vocabulary existed to describe it as a
+    dual-route architecture rather than as two competing all-or-nothing theories.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t15">
+    <h2><span class="num">15</span>Śruti-Svara: Twenty-Two Microtones</h2>
+    <p>
+    The Nāṭyaśāstra's gāndharva chapters divide the octave into twenty-two <span class="term">śruti</span>
+    (audible microtonal intervals, of unequal size), and derive the seven <span class="term">svara</span> —
+    ṣaḍja, ṛṣabha, gāndhāra, madhyama, pañcama, dhaivata, niṣāda — by assigning each svara a specific
+    consecutive-śruti count, traditionally rendered as a 4-3-2-4-4-3-2 distribution across the seven notes. The
+    two principal scale-frameworks derived from this system, ṣaḍja-grāma and madhyama-grāma, differ only in the
+    redistribution of a single śruti between two adjacent notes — a difference nearly inaudible in isolation,
+    yet sufficient to define two non-interchangeable melodic universes. Modern equal-tempered instruments,
+    including the harmonium that has become nearly ubiquitous in Hindustani teaching and accompaniment, fix
+    twelve equally spaced intervals per octave, collapsing the twenty-two-śruti resolution into a considerably
+    coarser grid.
+    </p>
+    <h3 class="subhead">Correlate — Psychoacoustics and Neuroscience of Pitch</h3>
+    <p>
+    Just-noticeable-difference (JND) research in psychoacoustics measures the smallest pitch difference a
+    listener can reliably detect, and finds this threshold is neither fixed nor small: it varies considerably
+    with training, and can fall well below one equal-tempered semitone for a trained listener. Spiegel and
+    Watson's comparative work on frequency discrimination found musicians substantially outperforming
+    non-musicians on fine pitch discrimination tasks, with the gap growing specifically in proportion to years
+    of active musical training rather than simple exposure — direct evidence that pitch-discrimination
+    resolution is a trainable perceptual skill, not a fixed property of the ear, and that a listener's practical
+    discrimination threshold can sit well inside the gaps a twelve-tone equal-tempered grid simply does not
+    represent.
+    </p>
+    <p>
+    Diana Deutsch's extensive research program on pitch perception, including her work on absolute pitch
+    prevalence in tone-language-speaking populations and on culturally shaped pitch categorization more broadly,
+    further undermines the idea that pitch perception naturally sorts into any single fixed category system,
+    twelve-tone or otherwise; category boundaries for pitch appear considerably more plastic and more
+    culturally and linguistically shaped than a universal twelve-semitone model implies. Read against this body
+    of work, a twenty-two-śruti system is best understood not as an antiquarian curiosity or an impractically
+    fine-grained ideal but as a formal notation for a level of perceptual resolution that trained listeners
+    demonstrably retain and can be shown, under controlled testing, to discriminate reliably. A student whose
+    entire training occurs on a fixed-pitch instrument is not receiving a simplified but equivalent version of
+    this material; the instrument's twelve-tone grid actively fails to represent distinctions the gāndharva
+    chapters treat as basic and constitutive, and no amount of practice on that instrument alone restores access
+    to a distinction the instrument cannot physically produce.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t16">
+    <h2><span class="num">16</span>Jāti-Mūrcchanā to Rāga: A Generative System</h2>
+    <p>
+    Prior to the historical standardization of the rāga system, melody was organized through
+    <span class="term">jāti</span>, some eighteen named scalar-melodic types each defined by graha (starting
+    note), aṃśa (predominant note), and nyāsa (closing note), and <span class="term">mūrcchanā</span>, the
+    systematic cyclic permutation of a seven-note scale from each of its seven degrees in turn, generating seven
+    distinct orderings from one base note-set. Sāraṅgadeva's Saṅgīta Ratnākara is conventionally credited with
+    the historical transition from this jāti-mūrcchanā framework toward the rāga system still in use in
+    Hindustani and Carnatic practice. A student trained exclusively in the modern rāga system encounters rāgas
+    as a closed, named catalogue to be learned individually, without necessarily encountering the earlier
+    jāti-mūrcchanā logic that generated the broader combinatorial space rāgas were historically drawn from.
+    </p>
+    <h3 class="subhead">Correlate — Schema Theory in Cognitive and Educational Psychology</h3>
+    <p>
+    Schema theory, originating in Bartlett's classic memory research and extended into music cognition through
+    Krumhansl's tonal-hierarchy studies, draws a sharp and empirically testable distinction between knowledge
+    stored as an individually memorized instance and knowledge stored as a generative rule capable of producing
+    or recognizing an entire family of related instances on demand. Bartlett's original serial-reproduction
+    experiments showed that recall of unfamiliar material is systematically distorted toward a rememberer's
+    existing schemas — subjects do not retrieve stored details so much as reconstruct plausible content from an
+    underlying structural expectation. Krumhansl's later work applied a related methodology directly to tonal
+    music, establishing that listeners hold internalized, probabilistically weighted expectations about which
+    scale degrees are structurally central within a given key, expectations that shape perception and memory of
+    melody even for listeners with no formal music training.
+    </p>
+    <p>
+    A musician who has memorized a large individual rāga repertoire without the underlying mūrcchanā-permutation
+    logic holds instance knowledge in exactly Bartlett's sense: each rāga is a separately stored item, however
+    well-practiced. A musician who has internalized the rotation rule generating an entire family of related
+    scales from one base note-set holds schema knowledge, and can in principle recognize, generate, or predict
+    an unfamiliar member of the same family without having previously encountered it, in the same way a
+    listener with internalized tonal-hierarchy expectations can predict plausible continuations of an unfamiliar
+    melody in a familiar key. Educational psychology draws precisely this distinction under a different name:
+    Ausubel's meaningful-learning theory contrasts rote learning, which produces knowledge that does not
+    transfer to novel cases, with meaningful or generative learning, which does — and the mūrcchanā-versus-rāga-
+    catalogue distinction is a direct musical instance of exactly that general educational-psychology
+    distinction.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t17">
+    <h2><span class="num">17</span>Register-Switching on Stage</h2>
+    <p>
+    The Nāṭyaśāstra's language-assignment rule — Sanskrit for kings, brahmins, ministers, and ascetics;
+    Śaurasenī Prakrit for queens and women of rank; Māgadhī for servants and lower attendants; Ardhamāgadhī for
+    specific middling male roles; Paiśācī for demons and morally marked characters — is built directly into how
+    the rasa-sūtra functions for a socially mixed audience. A Śaurasenī-speaking female character can produce
+    śṛṅgāra-appropriate speech that is emotionally immediate to an audience less trained in Sanskrit's
+    derivational density, while a Sanskrit-speaking king carries artha/dharma-weighted speech suited to vīra or
+    raudra. The rasa itself does not change register by register — the access route to it does; the script for
+    a single play is internally engineered so that no spectator is locked out of the emotional payload by
+    language alone.
+    </p>
+    <h3 class="subhead">Correlate — Social Psychology and Developmental Pragmatics</h3>
+    <p>
+    Giles' communication accommodation theory formalizes register-shift as a deliberate, socially meaningful
+    signal rather than a neutral stylistic choice: speakers converge toward an interlocutor's speech style to
+    signal affiliation and build rapport, or diverge from it to mark distinct social identity or maintain
+    distance, and listeners reliably detect and respond to these shifts even when they cannot articulate the
+    specific linguistic features driving the impression. Audience-design research in developmental pragmatics,
+    building on foundational work by Grice on cooperative communication and extended through subsequent
+    theory-of-mind research, establishes that tailoring an utterance's form to a specific listener's presumed
+    knowledge, social position, and relationship to the speaker is a genuine cognitive skill, acquired gradually
+    across childhood rather than present automatically from the earliest stages of language use — young
+    children reliably fail tasks requiring them to adjust an explanation's complexity to a listener's actual
+    knowledge state, while older children and adults succeed.
+    </p>
+    <p>
+    Bharata's register-assignment rule encodes exactly this audience-design principle, but at the scale of an
+    entire dramatic text engineered in advance rather than a single speaker adjusting in real time to a single
+    listener. Each character's register is chosen not for realism alone but to ensure the emotional payload of
+    a scene reaches every social stratum present in the audience simultaneously, without requiring every
+    spectator to share one uniform linguistic competence — a solution to the audience-design problem that
+    operates at the level of dramaturgical construction rather than individual conversational adjustment, but
+    that is solving the identical underlying communicative problem developmental pragmatics studies at the scale
+    of a single speaker and listener.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t18">
+    <h2><span class="num">18</span>Prakrit as Legitimate Parallel System</h2>
+    <p>
+    The coexistence-as-genealogy point is doing real dramaturgical work at the level of individual scene
+    construction: Prakrit dialogue can carry full rasa-weight precisely because it is a lawful transformation of
+    Sanskrit roots, not a degraded or broken imitation of them. A Śaurasenī line spoken by a queen in a śṛṅgāra
+    scene is composed directly in Prakrit, following Prakrit's own formal derivational rules, because Prakrit is
+    the register that scene's specific characterization and accessibility requirements call for. A persistent
+    modern misreading treats Prakrit-register dialogue as evidence of a character's lower status in a
+    straightforwardly hierarchical, deficit sense; the grammatical tradition's own treatment of Prakrit as a
+    legitimate parallel system, not an error state, does not support this reading.
+    </p>
+    <h3 class="subhead">Correlate — Social Psychology of Language Attitudes</h3>
+    <p>
+    Lambert's matched-guise technique, first developed in 1960 and replicated across dozens of language
+    communities since, demonstrated a specific and robust bias: listeners rate the same speaker recorded reading
+    identical content in two different language varieties as measurably more or less intelligent, competent, and
+    trustworthy depending solely on which variety they are heard speaking, with listeners entirely unaware they
+    are rating the same speaker twice. Because the content is held constant across guises, the technique isolates
+    a status judgment attached purely to register or accent, independent of anything the speaker actually said —
+    evidence that register-based status judgments are a robust, largely automatic and unreflective social-
+    cognitive bias, not a rational inference drawn from the actual content or quality of a speaker's argument.
+    </p>
+    <p>
+    This body of research gives a precise account of the modern misreading this section identifies, in reverse:
+    a contemporary reader who unreflectively downgrades a Prakrit-speaking character's status relative to a
+    Sanskrit-speaking one is very plausibly reproducing an ordinary matched-guise bias, projected backward onto
+    a text whose own grammatical tradition explicitly declined to encode that hierarchy. Vararuci's
+    Prākṛta-Prakāśa codifies Prakrit with its own formal, internally consistent rule-set, derivationally keyed
+    back to Sanskrit forms but treated as a legitimate parallel system rather than an error state — meaning the
+    status asymmetry a modern reader may feel between a Sanskrit-speaking king and a Prakrit-speaking queen is,
+    on the textual tradition's own terms, an imported bias rather than a feature the grammar itself encodes.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t19">
+    <h2><span class="num">19</span>Aśokan Epigraphy: Register-Engineering as State Policy</h2>
+    <p>
+    The material evidence for how deliberately register-engineering functioned as public policy sits outside
+    the Nāṭyaśāstra proper, in the Aśokan edicts themselves. Aśoka's rock and pillar edicts are written in
+    Brāhmī script and in Prakrit, addressed explicitly to the general populace on matters of dhamma — not in
+    Sanskrit, and not in a script reserved for a priestly class. The edicts are not even linguistically uniform
+    across sites: the northwestern versions are rendered not in Brāhmī but in Kharoṣṭhī, a script of
+    Aramaic-derived origin specific to the Gandhāra region, meaning a single administrative message was
+    deliberately rendered into whichever regional register and script would functionally reach a given local
+    population.
+    </p>
+    <h3 class="subhead">Correlate — Educational Psychology and Health-Literacy Research</h3>
+    <p>
+    Modern public-health and civic-messaging research offers a close functional parallel, developed for
+    entirely unrelated reasons. Health-literacy research, building on readability-formula work going back to
+    Flesch and elaborated considerably since, consistently finds that message comprehension and, more
+    importantly, actual behavioral uptake depend far more heavily on matching a message's register and reading
+    level to its intended audience's existing literacy than on the message's technical precision or content
+    accuracy — a public-health message written at a level exceeding its audience's typical reading proficiency
+    measurably fails to change behavior even when its factual content is correct, while a simpler, less
+    technically complete message pitched at the audience's actual level measurably succeeds. Plain-language
+    guidelines now standard in public-health and legal communication exist specifically to correct for this
+    gap.
+    </p>
+    <p>
+    Aśoka's administration appears to have applied essentially the same principle, intuitively and centuries
+    before it was formalized as a research finding, by deliberately choosing accessible register and locally
+    legible script over a prestige register that would have reached a considerably narrower population. Read
+    together with the register-switching this section's companion tabs describe within dramatic performance,
+    the Aśokan edicts supply independent, non-mythic, materially dated evidence that register-matching to
+    audience was understood and deliberately engineered as public policy by the same broader culture, not merely
+    idealized as an aspiration in a single origin narrative.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t20">
+    <h2><span class="num">20</span>Pali and the General Problem of Oral Transmission</h2>
+    <p>
+    Pali's role as a standardized literary Prakrit for Theravāda transmission supplies a useful control case.
+    The Pali canon preserves its own doctrine of how meaning-bearing utterance should be fixed and transmitted —
+    precise verse counting, formulaic repetition-blocks, a mnemonic architecture parallel to Vedic pāṭha
+    methods — showing that "freeze the register, then transmit exactly" was a general Indic solution to the
+    oral-transmission problem, not something unique to Sanskrit śruti. Buddhaghosa's fifth-century commentarial
+    work routinely glosses canonical Pali terms by tracing them to Sanskrit-cognate root senses, a direct,
+    centuries-later application of the Nirukta method, demonstrating that derivational transparency remained a
+    live interpretive tool well beyond the specific register in which it originated.
+    </p>
+    <h3 class="subhead">Correlate — Cognitive Psychology of Oral Memory</h3>
+    <p>
+    David Rubin's <em>Memory in Oral Traditions</em> (1995) undertook a systematic cognitive-psychological
+    analysis of exactly this class of transmission systems, examining epic poetry, counting-out rhymes, and
+    ballad traditions across unrelated cultures to identify which specific formal features independently make an
+    orally transmitted text more resistant to drift across successive generations of recall. Rubin's analysis
+    identified a recurring set of features doing this error-correcting work: fixed meter, formulaic repetition
+    of stock phrases at predictable structural points, rhyme, tightly constrained narrative sequencing, and
+    concrete, vivid imagery, all of which reduce the number of degrees of freedom available to a reciter's
+    memory at each point in the text, making an unintended substitution both less likely to occur and easier for
+    a listener trained in the tradition to detect when it does.
+    </p>
+    <p>
+    Rubin's methodology was developed from general cognitive-psychology principles of memory and had no direct
+    reference to Vedic or Pali material specifically, which makes the convergence more rather than less
+    significant: working from an entirely independent starting point, cognitive psychology arrives at
+    essentially the same feature list — rigid meter, formulaic redundancy, structural predictability — that
+    Vedic pāṭha methods and Pali's own formulaic architecture were independently built around centuries earlier.
+    This supports a fairly strong claim: that rigid, redundant textual structure in an oral tradition is not a
+    decorative or purely aesthetic feature, but the specific, identifiable error-correction mechanism that makes
+    multi-generation transmission fidelity achievable without writing, and that traditions facing this same
+    transmission problem tend to converge on this same solution independent of cultural contact.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t21">
+    <h2><span class="num">21</span>The Rasa-Sūtra's Grammatical Construction</h2>
+    <p>
+    Bharata's foundational statement is compact and technically precise:
+    <span class="devq">विभावानुभावव्यभिचारिसंयोगाद् रसनिष्पत्तिः</span> — rasa arises from the conjunction
+    (<span class="term">saṃyoga</span>) of vibhāva, anubhāva, and vyabhicāribhāva. The sentence's own internal
+    construction rewards exactly the grammatical literacy the earlier sections build: it is a single compound
+    sentence built substantially through samāsa, with the causal instrumental case-ending on the compound
+    signaling that rasa-niṣpatti (accomplishment of rasa) is the grammatical result of the stated conjunction —
+    the same subject-predicate-cause logic Pāṇinian vidhi rules use throughout. A reader who can parse Pāṇinian
+    rule-sentences can parse the rasa-sūtra using the identical skill-set, because it is composed using the
+    identical grammatical machinery.
+    </p>
+    <h3 class="subhead">Correlate — Cognitive and Appraisal Psychology of Emotion</h3>
+    <p>
+    Causal-schema research in cognitive psychology, particularly Kelley's covariation model of causal attribution,
+    established that people do not typically attribute an outcome to a single isolated cause but assess how
+    several potential causal factors covary with the outcome across situations, weighting each factor's
+    contribution accordingly. Appraisal theories of emotion, developed independently by Lazarus and later
+    elaborated with considerably more structural detail by Scherer's component process model, extend this same
+    basic architecture into emotion research specifically: an emotional response is modeled as the output of a
+    sequence or combination of situational appraisals — relevance, implications for one's goals, coping
+    potential, and so on — rather than as a single trigger producing a single automatic response.
+    </p>
+    <p>
+    The rasa-sūtra's saṃyoga clause is structurally very close to this appraisal-theory architecture: it
+    specifies rasa as arising from a conjunction of multiple distinct, named components — the situational
+    determinants (vibhāva), the observable responses (anubhāva), and the transient accompanying states
+    (vyabhicāribhāva) — rather than treating emotion as flowing directly from a single dramatic trigger. The
+    precision of Bharata's grammatical construction matters for the same reason precision matters in a
+    componential appraisal model: collapsing a multi-factor causal claim into a loose single-cause paraphrase,
+    of the kind "emotion comes from a triggering situation," discards exactly the interaction structure both the
+    rasa-sūtra and a modern appraisal model are built specifically to capture, and a reader who only retains the
+    paraphrase has lost the sūtra's actual technical content even while believing they have summarized it
+    accurately.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t22">
+    <h2><span class="num">22</span>The Four Abhinaya Channels as Joint Curriculum</h2>
+    <p>
+    <span class="term">Āṅgika</span> (bodily) abhinaya subdivides into aṅga (the six major limbs), pratyaṅga
+    (secondary limbs), and upāṅga (minor limbs, chiefly facial and ocular, treated with disproportionately
+    granular technical detail relative to their comparatively small muscle mass). <span class="term">Vācika</span>
+    (verbal) abhinaya governs pitch, tempo, and register. <span class="term">Āhārya</span> (costume, makeup,
+    ornament, stage property) is treated as a full technical subject, with specific colour convention assigned
+    by character type and rasa. <span class="term">Sāttvika</span> abhinaya is the involuntary layer certifying
+    genuine absorption. The text's insistence on joint training across all four channels is not a stylistic
+    preference; it is the practical enactment of the claim that performance aims at paśyantī, and no single
+    channel among the four is sufficient to carry a spectator there alone.
+    </p>
+    <h3 class="subhead">Correlate — Neuroscience of Multisensory Integration and Developmental Emotion Research</h3>
+    <p>
+    The McGurk effect, first reported by McGurk and MacDonald in 1976, remains one of the clearest demonstrations
+    that auditory and visual channels of speech are integrated pre-consciously into a single unified percept
+    rather than processed separately and combined afterward by inference: presenting a listener with a visual
+    articulation of one syllable dubbed over an audio recording of a different syllable reliably produces the
+    perception of a third syllable that neither channel alone contains, and the illusion persists even when the
+    listener knows exactly how the stimulus was constructed. This is direct experimental evidence that a
+    listener does not process vācika and āṅgika information as independent channels later combined by conscious
+    reasoning, but as one fused percept from very early, largely automatic stages of perceptual processing —
+    which is a strong argument, drawn from an entirely unrelated experimental tradition, for why the text treats
+    joint training across channels as necessary rather than merely convenient.
+    </p>
+    <p>
+    Developmental research on emotional competence, particularly Saarni's extensive work on how children acquire
+    emotional expression and regulation, reinforces this from the developmental side: children acquire
+    emotional expression as a coordinated, multi-channel skill — facial expression, vocal prosody, posture, and
+    precise timing developing and calibrating together — rather than as a set of independently mastered
+    components later assembled. This gives a specific empirical case for a claim the text makes on its own
+    authority: sequential, siloed training in the four abhinaya channels, however excellent each channel's
+    individual instruction, does not by simple addition reconstruct the integrated, cross-channel skill that
+    both the McGurk literature and the developmental emotional-competence literature independently show is not
+    decomposable into separately trained parts.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t23">
+    <h2><span class="num">23</span>Devanāgarī: Script Structure and Underlying Form</h2>
+    <p>
+    Devanāgarī's <span class="term">śirorekhā</span> (headline) binds each word into a single visual unit, and
+    its conjunct ligatures (<span class="term">saṃyuktākṣara</span>) visually fuse consonant clusters exactly
+    where sandhi rules fuse them phonetically. When Ānandavardhana's dhvani theory argues that a word's
+    suggested meaning sits "beneath" or "beyond" its literal denoted form, the manuscript tradition transmitting
+    that argument is itself, at the graphemic level, already built on a logic of surface-form-hiding-underlying-
+    structure: a conjunct letter looks like one graphic unit but decomposes, on inspection, into two or more
+    root consonants joined by a rule — the same intellectual habit of decomposing surface into governed
+    underlying units applied, this time, to the physical page itself.
+    </p>
+    <h3 class="subhead">Correlate — Cognitive Neuroscience of Reading</h3>
+    <p>
+    Dehaene's research on the visual word form area, part of a broader research program on what he terms
+    "neuronal recycling," describes how literacy repurposes a specific region of ventral occipito-temporal
+    cortex — originally evolved and initially tuned for general object and shape recognition — into a
+    specialized detector for the characteristic letter-combinations of whatever specific script a reader has
+    become literate in. This is not a generic visual-processing upgrade but a script-specific one: a skilled
+    reader's visual word form area becomes tuned to the recurring shapes of their particular writing system,
+    treating frequent multi-letter combinations as recognizable units in their own right rather than processing
+    each component letter independently every time. For a skilled Devanāgarī reader, this implies conjunct-
+    ligature shapes themselves become directly recognizable visual units, not merely sums of their component
+    consonants reconstructed anew on each encounter.
+    </p>
+    <p>
+    Cross-script dyslexia and reading-difficulty research adds a further, more clinically grounded layer: reading
+    difficulty profiles differ measurably between transparent alphasyllabic scripts and more opaque alphabetic
+    ones, and between scripts requiring dense visual decomposition of conjuncts and scripts built from simple
+    linear letter strings, because the two place substantially different demands on orthographic working memory
+    and visual-analysis routes. This gives an independent, clinically motivated reason to take Devanāgarī's
+    conjunct-ligature structure seriously as a real cognitive-processing feature and not merely an aesthetic or
+    calligraphic property of the script: the script's surface-hides-structure logic is measurably consequential
+    for how a reader's visual system has to be trained to process it fluently, which is also precisely why that
+    logic is entirely absent from a Roman-transliterated presentation of the same text, regardless of how
+    phonetically accurate that transliteration otherwise is.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t24">
+    <h2><span class="num">24</span>Script Evolution: Brāhmī to Gupta to Siddhaṃ and Nāgarī</h2>
+    <p>
+    The path from Aśokan Brāhmī to standardized Devanāgarī proceeds through identifiable intermediate stages
+    rather than a single transition. Gupta script (4th–6th century CE) is the first major stage, showing more
+    rounded, cursive letterforms than the angular Aśokan Brāhmī. From Gupta script, two branches diverge:
+    <span class="term">Siddhaṃ</span>, used extensively for Buddhist manuscript and mantra transmission and
+    carried, via this specific route, into China and Japan, where it remains in specifically ritual use in
+    Buddhist contexts today, long after its disuse in India itself; and <span class="term">Nāgarī</span>, which
+    gradually standardizes into Devanāgarī by approximately the 7th–8th century.
+    </p>
+    <h3 class="subhead">Correlate — Cultural-Transmission and Comparative Psychology</h3>
+    <p>
+    Cultural-evolution research, particularly Boyd and Richerson's dual-inheritance framework and Tomasello's
+    work on the mechanisms underlying cumulative human culture, treats a script or notation system as a
+    transmissible cultural artifact in its own right, subject to its own selective pressures and its own
+    fidelity requirements, largely independent of the fate of the spoken system it was originally built to
+    record. This framework predicts, as a general and unremarkable feature of cultural transmission, exactly
+    the pattern Siddhaṃ demonstrates: a script can persist as a specialized, high-fidelity ritual technology
+    within a linguistic community that never spoke, and does not speak, the language the script originally
+    encoded, because the script's continued transmission depends on its own social and institutional support
+    structures — in Siddhaṃ's case, Buddhist ritual and mantra practice — rather than on the survival of any
+    living speech community using the underlying language.
+    </p>
+    <p>
+    This dissociation between script survival and spoken-register survival is a well-documented, general feature
+    of cultural transmission rather than a Sanskrit-specific anomaly; liturgical Latin in the Roman Catholic
+    tradition and Coptic in Egyptian Christian liturgy are structurally close parallels, each a script-and-
+    register pairing that persists in a narrow ritual domain long after ceasing to be anyone's spoken
+    vernacular. Comparative-psychology and cultural-transmission research of this kind clarifies that script
+    survival and spoken-register survival are genuinely independent variables, capable of moving apart in either
+    direction, which is the specific reason Siddhaṃ's continued East Asian ritual use and its near-total absence
+    from ordinary Devanāgarī-based Sanskrit pedagogy in India today are not in tension with each other; they are
+    two separate transmission histories that happened to share a common origin point in Gupta-era script
+    evolution.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t25">
+    <h2><span class="num">25</span>Guru-Śiṣya Paramparā: Apprenticeship Transmission</h2>
+    <p>
+    None of the material this document surveys survived by manuscript alone. The
+    <span class="term">guru-śiṣya paramparā</span> — sustained, daily, long-duration apprenticeship — carried
+    practical knowledge a written text specifies only partially: precise recitation accent, karaṇa execution
+    timing, rāga-specific ornamentation, none of which a static manuscript notation fully recovers. This is
+    also the most plausible explanation for documented regional divergence among Nāṭyaśāstra manuscript
+    recensions — the southern recension differing from northern recensions in chapter count and specific verse
+    readings — since a lineage-transmitted text accumulates local commentarial and performance-tradition
+    influence in a way a purely manuscript-copied text, absent a living practice behind it, generally does not.
+    </p>
+    <h3 class="subhead">Correlate — Educational Psychology of Scaffolding and Behavioral Feedback</h3>
+    <p>
+    Vygotsky's concept of the zone of proximal development, and its later formalization by Wood, Bruner, and
+    Ross as "scaffolding," describe learning as most effective when a more competent partner provides real-time,
+    graduated support calibrated specifically to what a given learner can almost, but not quite, do
+    independently, with that support progressively withdrawn as the learner's competence increases. This
+    description fits guru-śiṣya apprenticeship closely and fits static text-based instruction poorly, for a
+    structural reason: scaffolding by definition requires the tutor to observe the specific error a particular
+    learner is currently making, at the moment they make it, and adjust support accordingly — a requirement no
+    fixed written text, however comprehensive, can satisfy, since a text cannot observe or respond to any
+    individual learner's specific, in-the-moment error at all.
+    </p>
+    <p>
+    Behavioral psychology's research on feedback timing makes closely related point from a different empirical
+    direction. Studies of corrective feedback in motor and verbal learning consistently find that a feedback
+    loop's effectiveness depends heavily on latency — feedback delivered immediately, while the learner's own
+    internal sense of the attempted action is still active, produces measurably better correction and retention
+    than feedback delivered even a short time later, after that internal trace has faded. A guru correcting a
+    student's karaṇa positioning or recitation accent in the same session, often within seconds of the error,
+    is operating at exactly the latency this research identifies as most effective; a recorded video or written
+    manuscript, however accurately it preserves the correct final form, cannot close this loop at all, since it
+    has no mechanism for detecting a given learner's specific deviation from that form in real time. This is the
+    precise, mechanistic version of the gap this section identifies between a preserved archive and a living
+    apprenticeship.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t26">
+    <h2><span class="num">26</span>Kāvyotpatti: Śoka Becomes Śloka</h2>
+    <p>
+    The Rāmāyaṇa's Bāla Kāṇḍa preserves the tradition's principal origin-account for kāvya. Vālmīki, witnessing
+    a hunter kill one of a mating pair of krauñca birds, hears the surviving bird's grief-cry and produces,
+    unbidden, the first metrically perfect śloka:
+    </p>
+    <blockquote class="src">
+      <span class="devq">मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीः समाः ।<br>यत्क्रौञ्चमिथुनादेकम् अवधीः काममोहितम् ॥</span>
+      <cite>Rāmāyaṇa, Bāla Kāṇḍa</cite>
+    </blockquote>
+    <p>
+    The traditional gloss on this moment specifies mechanism, not merely occasion: <span class="term">śoka</span>
+    (grief) becomes <span class="term">śloka</span> (verse), a paronomasia the tradition treats as doctrinal
+    rather than incidental wordplay. The argumentative claim embedded in the account is that metrical form is not
+    a decoration subsequently applied to raw emotion; it is what sufficiently intense emotion becomes when
+    voiced through a mind already saturated in Chandas — a claim continuous with the Nāṭyaśāstra's own rasa
+    doctrine, since both locate the origin of aesthetic form in a witnessed emotional event crystallizing into
+    structured sound rather than in deliberate technical invention.
+    </p>
+    <h3 class="subhead">Correlate — Health Psychology and Expressive-Writing Research</h3>
+    <p>
+    Pennebaker's expressive-writing research program, beginning with a widely replicated 1986 study and extended
+    across several hundred subsequent studies, found that structured, sustained written processing of an
+    emotionally significant event produces measurable downstream physical and psychological benefits — reduced
+    subsequent physician visits, improved immune-function markers, and better longer-term mood regulation — that
+    unstructured emotional venting alone does not reliably produce. A recurring and somewhat counterintuitive
+    finding across this literature is that the benefit correlates specifically with the degree to which a
+    writer's account develops coherent narrative structure and causal or insight-oriented language over
+    repeated writing sessions, not simply with how much raw emotional content is expressed; writers whose
+    accounts remain formless and repetitive across sessions show smaller benefits than writers whose accounts
+    develop increasing narrative and causal coherence.
+    </p>
+    <p>
+    The krauñca-vadha account's specific claim — that grief becomes verse only through a mind already trained in
+    metrical form, rather than becoming verse through raw emotional intensity alone — is closely consistent with
+    this finding at the level of individual psychology. Pennebaker's research suggests form is not incidental to
+    the regulatory or expressive function of processing an emotional event in language; the act of imposing
+    coherent structure appears to be doing a substantial part of the therapeutic work, not merely dressing up an
+    already-complete emotional discharge. Read this way, Vālmīki's Chandas-saturated mind is not simply a poet's
+    convenient prior skill that happened to be available at the moment of witnessing the krauñca's death; it is,
+    on the health-psychology account, close to a precondition for the grief to resolve into something with the
+    specific structuring and regulatory benefits Pennebaker's research associates with coherent narrative form,
+    rather than remaining unprocessed distress.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t27">
+    <h2><span class="num">27</span>Nāṭyotpatti: The Sarvavarṇika Mandate</h2>
+    <p>
+    Chapter 1 of the Nāṭyaśāstra supplies an explicit causal account, not a poetic gesture. In a declining age,
+    marked by the text's own diagnosis of rising kāma, lobha, krodha, and mātsarya, the gods petition Brahmā for
+    a form of instruction accessible to all four varṇas, including śūdras, who were barred from direct study of
+    the four Vedas. Brahmā's response is the composition of a fifth Veda, formed by extraction from the existing
+    four — pāṭhya from the Ṛgveda, gīta from the Sāmaveda, abhinaya from the Yajurveda, rasa from the
+    Atharvaveda — explicitly so that instruction could be delivered through what can be seen and felt, for an
+    audience the source Vedas were structurally unable to reach. Taken as a pedagogical mandate rather than only
+    a mythic charter, <span class="term">sarvavarṇika</span> — belonging to all varṇas without exception —
+    commits the tradition to a specific, checkable standard: that no spectator's social position should
+    determine whether the aesthetic-emotional instruction nāṭya delivers reaches them.
+    </p>
+    <h3 class="subhead">Correlate — Social Psychology of Exclusion and Educational Access</h3>
+    <p>
+    Social identity theory, developed by Tajfel and Turner from a substantial body of experimental work on
+    intergroup behavior, predicts that categorical exclusion from a prestige knowledge-system produces durable
+    in-group and out-group stratification largely independent of any individual excluded person's actual
+    capability — the exclusion itself, as a categorical fact, is sufficient to generate the stratification, even
+    absent any real difference in underlying ability between groups. This is precisely the condition the
+    fifth-Veda petition names as its founding problem: exclusion from Vedic study by birth category alone,
+    regardless of individual capacity, and the petition's remedy is addressed to the exclusion itself rather than
+    to any claimed deficiency in the excluded population.
+    </p>
+    <p>
+    Universal design for learning, a framework developed within educational psychology by Rose and Meyer and now
+    widely applied in curriculum design, makes the modern, secular version of essentially the same design
+    argument Brahmā's mythic response enacts: that instructional content should be delivered through multiple
+    representational channels — visual, auditory, kinesthetic, and others — specifically so that no single
+    access barrier excludes a learner from the material, rather than delivering content through one channel and
+    treating any learner that channel fails to reach as simply outside the intended audience. Nāṭya's own
+    self-description as accessible through what can be seen and felt, rather than through the Vedic recitation
+    Sanskrit fluency alone could unlock, is a multi-channel access design in exactly this sense, engineered
+    centuries before the modern educational-psychology framework existed to name the principle formally.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t28">
+    <h2><span class="num">28</span>Abhidhā, Lakṣaṇā, Vyañjanā, and Rasa-Dhvani</h2>
+    <p>
+    Ānandavardhana's Dhvanyāloka names three distinct operations available to a word: <span class="term">abhidhā</span>
+    (direct, literal denotation), <span class="term">lakṣaṇā</span> (secondary, metaphoric extension, invoked
+    when the literal sense fails to fit its context), and <span class="term">vyañjanā</span> (suggestion — a
+    further, evocative sense neither directly stated nor a straightforward metaphoric substitution, but
+    implied). <span class="term">Dhvani</span> names poetry in which this third operation carries the primary
+    aesthetic weight. Abhinavagupta's Locana commentary fuses this apparatus directly with the rasa-sūtra: rasa
+    itself, he argues, is the supreme form of dhvani — <span class="term">rasa-dhvani</span> — since rasa is
+    never literally stated by a dramatic text but is entirely suggested through the vibhāva-anubhāva-
+    vyabhicāribhāva conjunction reaching a spectator whose sthāyibhāva is already prepared to receive it.
+    </p>
+    <h3 class="subhead">Correlate — Cognitive Metaphor Theory and Neuropsychology of Figurative Language</h3>
+    <p>
+    Lakoff and Johnson's conceptual metaphor theory, first developed in <em>Metaphors We Live By</em> (1980) and
+    substantially elaborated since, argues that figurative meaning is not a decorative deviation from a more
+    basic literal meaning but a pervasive, largely unnoticed structuring mechanism of ordinary cognition, active
+    even in everyday expressions speakers do not experience as figurative at all — treating time as a spatial
+    resource that can be "spent" or "saved," for example, is a productive conceptual metaphor rather than a
+    rhetorical flourish. This is a direct modern parallel to lakṣaṇā's claim that secondary sense is a
+    systematic, rule-governed linguistic extension operating constantly across ordinary usage rather than an
+    occasional device reserved for self-consciously poetic language.
+    </p>
+    <p>
+    Neuropsychological research on figurative-language comprehension supplies a further, more clinically specific
+    layer of evidence for the abhidhā/lakṣaṇā/vyañjanā distinction. Studies of patients with right-hemisphere
+    brain damage, including Bottini and colleagues' neuroimaging work and a substantial subsequent clinical
+    literature, find these patients selectively impaired at inferring non-literal, suggested meaning — failing
+    idiom comprehension, missing implied humor, taking figurative statements literally — while their
+    comprehension of literal, directly denoted meaning remains largely intact. This is physical, clinical
+    evidence that vyañjanā-type suggested meaning is processed through mechanisms at least partly dissociable
+    from abhidhā-type literal denotation, since brain damage can selectively impair one while sparing the other.
+    Ānandavardhana's three-way distinction, developed through close literary analysis with no access to lesion
+    studies or neuroimaging, converges with this clinical literature on the same underlying claim: suggested
+    meaning is not simply literal meaning processed with extra interpretive effort, but draws on at least
+    partially separate cognitive and neural resources.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t29">
+    <h2><span class="num">29</span>What an Integrated Curriculum Requires</h2>
+    <p>
+    The claim running through the sections above is not that every fine-arts student must complete a full
+    Sanskrit grammar sequence before touching a karaṇa, any more than a music student must complete a physics
+    degree before touching an instrument — the register-stack itself shows the tradition's own comfort with
+    graded, non-Sanskrit access routes. The claim is narrower and more specific: Chandas feeding karaṇa
+    combinatorics, Śikṣā's diagnostic method feeding vācika training, Bhartṛhari's four-level vāk theory feeding
+    the rationale for joint four-channel abhinaya training are specific, statable connections that a curriculum
+    can either teach explicitly, as one subject's internal structure, or leave implicit and rediscoverable only
+    by a student who happens to cross-train in both linguistics and performance independently.
+    </p>
+    <h3 class="subhead">Correlate — Transfer-of-Learning Research</h3>
+    <p>
+    Transfer-of-learning research, systematized in Barnett and Ceci's influential taxonomy distinguishing near
+    transfer (applying a skill to a closely related context) from far transfer (applying it to a substantially
+    different one), consistently finds that skills taught in isolation transfer poorly to related domains unless
+    the shared underlying structure connecting the two domains is made explicit to the learner at the time of
+    instruction. Near-identical mechanisms taught in fully separate courses, with no course responsible for
+    stating the connection between them, routinely fail to transfer even when a learner has independently
+    mastered both domains to a high standard in isolation — a well-replicated finding across mathematics,
+    physics, and language-learning transfer studies specifically, not a speculative claim.
+    </p>
+    <p>
+    This is a general finding about curriculum design, unconnected to Sanskrit or Nāṭya specifically, and it
+    gives the proposal for connective teaching an independent evidentiary basis beyond the specific historical
+    material surveyed here: explicit statement of shared underlying structure, not merely sequential or parallel
+    exposure to both domains, is what transfer research identifies as the necessary condition for a learner to
+    actually use knowledge gained in one domain — Chandas, say — while working in a structurally related but
+    superficially different domain, such as karaṇa. A curriculum silent on the connection is, on this research,
+    not a neutral choice but an active barrier to the transfer it could otherwise support.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <section class="tabpanel" id="t30">
+    <h2><span class="num">30</span>Synthesis: One Method at Every Scale</h2>
+    <p>
+    Sanskrit's derivational transparency is engineered into the grammar at every level: phonetics, phoneme
+    compression, rule-scope tracking, root-suffix derivation, sound-boundary fusion, compounding, and
+    etymological hermeneutics. The same logic extends into metrics, from metrics into kinetics, into a cosmology
+    of sound, into a four-level theory of speech, into a contested theory of holistic meaning-grasp, into
+    microtonal music theory, and into melodic combinatorics — one method, reapplied at successive scales. A
+    delivery mechanism then carries this precision beyond the population capable of directly acquiring it, and
+    two origin-accounts state an explicit theory of why that delivery mechanism matters. The rasa-sūtra and the
+    four abhinaya channels are the resulting curriculum's technical core; dhvani theory is its own account of
+    what its highest achievement consists of: meaning and feeling both operating beneath their own literal or
+    audible surface, recoverable only by a reader or spectator trained to know the rule.
+    </p>
+    <h3 class="subhead">Correlate — Convergence Across the Disciplines Surveyed</h3>
+    <p>
+    Read together, the correlates developed across the sections above are not thirty unrelated appendices but
+    converge on a small number of repeated mechanisms studied independently across cognitive psychology,
+    neuroscience, and developmental, social, and health psychology: chunking under working-memory constraints
+    (the Māheśvara Sūtras, samāsa, karaṇa consolidation); statistical and categorical segmentation of a
+    continuous signal (sandhi, phonetic categorical perception, śruti discrimination); staged rather than unitary
+    production and comprehension (Bhartṛhari's four levels, Levelt's speech-production model, dual-route reading);
+    multichannel integration (the four abhinaya channels, the McGurk effect, developmental emotional
+    competence); and fidelity-preserving redundant structure in transmission (the register-stack, Aśokan
+    epigraphy, Pali's formulaic architecture, Rubin's oral-tradition research, guru-śiṣya scaffolding).
+    </p>
+    <p>
+    That a human nervous system built for general-purpose sound, movement, and meaning processing would be
+    worked on, over many centuries, by a sustained and technically sophisticated pedagogical tradition, and would
+    then show up, independently, in modern laboratories studying the same underlying constraints through entirely
+    different methods, is not a coincidence requiring an unusual explanation. It is the expected outcome of two
+    different methods — sustained textual and pedagogical observation on one side, controlled experimental
+    measurement on the other — converging on the same underlying object, because the object itself, the human
+    nervous system's capacity for structured sound, movement, and feeling, has not changed in the intervening
+    centuries even though the tools available for studying it have.
+    </p>
+    <a class="backtotop" href="#top">↑ back to contents</a>
+  </section>
+
+  <div class="bib" id="bib">
+    <h2>Working Bibliography — Part V</h2>
+    <ol>
+      <li><span class="primary">Nāṭyaśāstra</span>, attributed to Bharata Muni.</li>
+      <li><span class="primary">Aṣṭādhyāyī</span>, Pāṇini, with the Mahābhāṣya of Patañjali and the Vārttikas of Kātyāyana.</li>
+      <li><span class="primary">Vākyapadīya</span>, Bhartṛhari.</li>
+      <li><span class="primary">Rāmāyaṇa</span> (Bāla Kāṇḍa), attributed to Vālmīki.</li>
+      <li><span class="primary">Dhvanyāloka</span>, Ānandavardhana, with the Locana of Abhinavagupta.</li>
+      <li><span class="primary">Nirukta</span>, Yāska. <span class="primary">Chandaḥśāstra</span>, Piṅgala. <span class="primary">Prākṛta-Prakāśa</span>, Vararuci. <span class="primary">Saṅgīta Ratnākara</span>, Śārṅgadeva.</li>
+      <li>Aśokan rock and pillar edicts (Girnar, Kālsī, Shāhbāzgaṛhī, Mānsehrā recensions).</li>
+      <li>Pali Tipiṭaka (Vinaya, Sutta, Abhidhamma Piṭaka), with Buddhaghosa's commentarial corpus.</li>
+      <li>Ziegler, J. & Goswami, U. (2005). Reading acquisition, developmental dyslexia, and skilled reading across languages: a psycholinguistic grain size theory. <em>Psychological Bulletin</em>, 131(1).</li>
+      <li>Rastle, K., Davis, M., & New, B. (2004). The broth in my brother's brothel: morpho-orthographic segmentation in visual word recognition. <em>Psychonomic Bulletin & Review.</em></li>
+      <li>Miller, G.A. (1956). The magical number seven, plus or minus two. <em>Psychological Review.</em></li>
+      <li>Chase, W.G. & Simon, H.A. (1973). Perception in chess. <em>Cognitive Psychology.</em></li>
+      <li>Saffran, J., Aslin, R., & Newport, E. (1996). Statistical learning by 8-month-old infants. <em>Science.</em></li>
+      <li>Gibson, E. (1998). Linguistic complexity: locality of syntactic dependencies. <em>Cognition.</em></li>
+      <li>Levelt, W.J.M. (1989). <em>Speaking: From Intention to Articulation.</em> MIT Press.</li>
+      <li>Vygotsky, L. (1962/1978). <em>Thought and Language</em>; <em>Mind in Society.</em></li>
+      <li>Large, E. & Jones, M.R. (1999). The dynamics of attending: how people track time-varying events. <em>Psychological Review.</em></li>
+      <li>Patel, A. (2006). Musical rhythm, linguistic rhythm, and human evolution. <em>Music Perception.</em></li>
+      <li>Giles, H. Communication Accommodation Theory (various, 1970s–present).</li>
+      <li>Lambert, W. et al. (1960). Evaluational reactions to spoken languages. <em>Journal of Abnormal and Social Psychology.</em></li>
+      <li>Rubin, D. (1995). <em>Memory in Oral Traditions.</em> Oxford University Press.</li>
+      <li>McGurk, H. & MacDonald, J. (1976). Hearing lips and seeing voices. <em>Nature.</em></li>
+      <li>Saarni, C. (1999). <em>The Development of Emotional Competence.</em></li>
+      <li>Dehaene, S. (2009). <em>Reading in the Brain.</em></li>
+      <li>Boyd, R. & Richerson, P. Dual-inheritance theory (various); Tomasello, M. cumulative culture research (various).</li>
+      <li>Wood, D., Bruner, J., & Ross, G. (1976). The role of tutoring in problem solving. <em>Journal of Child Psychology and Psychiatry.</em></li>
+      <li>Pennebaker, J.W. (1986 onward). Expressive writing research program.</li>
+      <li>Tajfel, H. & Turner, J. Social identity theory (various).</li>
+      <li>Rose, D. & Meyer, A. (2002). <em>Teaching Every Student in the Digital Age: Universal Design for Learning.</em></li>
+      <li>Lakoff, G. & Johnson, M. (1980). <em>Metaphors We Live By.</em></li>
+      <li>Bottini, G. et al. (1994). The role of the right hemisphere in the interpretation of figurative aspects of language. <em>Brain.</em></li>
+      <li>Barnett, S. & Ceci, S. (2002). When and where do we apply what we learn? A taxonomy for far transfer. <em>Psychological Bulletin.</em></li>
+    </ol>
+  </div>
+
+  <footer class="endnote">
+    <span class="devq">नादब्रह्म</span>
+    <p>Part V of the 108 Karaṇas monograph — working draft — Part VI follows</p>
+  </footer>
+
+</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nāda, Vāk, Śāstra — Full Technical Reference</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1907,4 +3310,3 @@ window.showTab = showTab;
 </div>
 </body>
 </html>
-
